@@ -1,0 +1,27 @@
+<section>
+
+  <div class="header"><h1>WELCOME TO CART CHECKOUT APP</h1></div>
+
+  <div class="container">
+    <div class="title">Sign in</div>
+    <div class="content">
+      <form [formGroup]="signInForm">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Email Id</span>
+            <input type="text" placeholder="Enter your username" required formControlName="emailID">
+          </div>
+
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" placeholder="Enter your password" required formControlName="password">
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Sign In" (click)="getUserDetails()">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="sign-up-page"><p>New Here? <span><a [routerLink]="['/sign-up']">Sign Up</a></span></p></div>
+</section>

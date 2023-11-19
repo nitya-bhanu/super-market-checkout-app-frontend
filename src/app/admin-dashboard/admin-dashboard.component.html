@@ -1,0 +1,55 @@
+<app-home-navbar></app-home-navbar>
+<div class="display-pane">
+    <div class="left-side">
+        <div class="greetings">
+            <h1 class="clock" id="MyClockDisplay"></h1>
+        </div>
+        <div class="left-side-pane bg-dark">
+            <a [routerLink]="['/dashboard/order-table']">Visualisation Summary</a>
+            <a [routerLink]="['/dashboard/order-details']">Monthly Order Summary</a>
+            <a [routerLink]="['/dashboard/users']">Customer Details</a>
+            <a [routerLink]="['/dashboard/loyalty-points']">Loyalty Setup</a>
+        </div>
+    </div>
+
+    <div class="middle-pane">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="right-side-pane">
+
+        <div class="current-month-sales">
+            Sales This month
+            <br>
+            {{currentMonthtotal}}
+            <span id="boot-icon" class="bi bi-arrow-90deg-up"
+                style="font-size: 29px; color: rgb(0, 128, 55); -webkit-text-stroke-width: 0px; text-shadow: rgb(0, 255, 136) 0px 0px 0px; opacity: 1;"></span>
+        </div>
+
+        <div class="past-month-sales">
+            Sales Past month
+            <br>
+            {{pastMonthTotal}}
+            <span id="boot-icon" class="bi bi-arrow-90deg-down"
+                style="font-size: 29px; color: rgb(255, 55, 55); -webkit-text-stroke-width: 0px; text-shadow: rgb(0, 255, 136) 0px 0px 0px; opacity: 1;"></span>
+        </div>
+
+        <div class="table-req">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Product Requests</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of requestedProducts">
+                        <td>{{item.title}}</td>
+                        <td><a [routerLink]="[item.title]">View</a></td>
+                    </tr>
+                    <tr>
+                        <td><a [routerLink]="['all']">View All</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

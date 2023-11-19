@@ -1,0 +1,16 @@
+<div class="outer">
+    <div class="content animated fadeInLeft">
+        <!-- <span class="bg animated fadeInDown">EXCLUSIVE</span> -->
+        <h1>{{displayProducts.title.length > 40 ? displayProducts.title.slice(0, 40).trim()
+            + '...' : displayProducts.title}}</h1>
+        <div class="button">
+                <a (click)="increaseCart(displayProducts.prodId)" [routerLink]="['/cart']">+</a>
+                <a (click)="decreaseCart(displayProducts.prodId)" [routerLink]="['/cart']">-</a>
+                <p>Price ${{displayProducts.price}}</p>
+                <p>Quantity: {{FetchedProducts.orderedProductQuantity}}</p>
+            <a class="cart-btn" (click)="removeFromCart(displayProducts.prodId)"><i class="cart-icon ion-bag"></i>REMOVE FROM
+                CART</a>
+        </div>
+    </div>
+    <img src="{{displayProducts.imageUrl}}" width="300px" class="animated fadeInRight">
+</div>

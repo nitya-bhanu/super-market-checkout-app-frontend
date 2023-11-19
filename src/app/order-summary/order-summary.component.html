@@ -1,0 +1,69 @@
+<section>
+		<div class="invoice-box">
+			<table>
+				<tr class="top">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td class="title">
+									<img src="./images/logo.png" alt="Invoice Receipt" style="width: 100%; max-width: 300px" />
+								</td>
+
+								<td>
+									Invoice #: <br />
+									Created: {{currentDate}}
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr class="information">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td>
+									Sparksuite, Inc.<br />
+									12345 Sunny Road<br />
+									Sunnyville, TX 12345
+								</td>
+
+								<td>
+									{{userDetails.name}}<br />
+									{{userDetails.emailId}}
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr class="heading">
+					<td>Payment Method</td>
+
+					<td>Check #</td>
+				</tr>
+
+				<tr class="details">
+					<td>Check</td>
+
+					<td>1000</td>
+				</tr>
+
+				<tr class="heading">
+					<td>Item Id</td>
+					<td>Quantity</td>
+				</tr>
+
+				<tr class="item" *ngFor="let itemz of productsAndQuantity">
+					<td>{{itemz.productId}}</td>
+
+					<td>{{itemz.orderedProductQuantity}}</td>
+				</tr>
+				<tr class="total">
+					<td></td>
+					<td>Total: ${{totalSum}}</td>
+				</tr>
+			</table>
+		</div>
+		<button class="btn btn-outline-dark" (click)="printPage()">Print Receipt</button>
+</section>

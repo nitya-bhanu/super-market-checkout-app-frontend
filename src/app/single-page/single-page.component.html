@@ -1,0 +1,22 @@
+<app-home-navbar></app-home-navbar>
+<section>
+    <div class="outer">
+        <div class="content">
+            <h1>{{FetchedProduct.title}}</h1>
+            <p>{{FetchedProduct.description}}</p>
+            <p>Rating: {{FetchedProduct.rating}}</p>
+            <p>Category: {{FetchedProduct.category}}</p>
+            <div class="button">
+                <a href="#">$ {{FetchedProduct.price}}</a>
+            </div>
+        </div>
+        <img src="{{FetchedProduct.imageUrl}}">
+    </div>
+    <div class="right-pane">
+        <h2>Related Products</h2>
+        <div class="inner"  *ngFor="let item of productsList">
+                <h1>{{item.title}}</h1>
+            <img src="{{item.imageUrl}}">
+        </div>
+    </div>
+</section>

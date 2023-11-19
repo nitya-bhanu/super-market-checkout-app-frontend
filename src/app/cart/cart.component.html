@@ -1,0 +1,13 @@
+<app-home-navbar></app-home-navbar>
+<section class="cart-view">
+    <app-cart-card *ngFor="let item of products" [FetchedProducts]="item" [userId]="userId"
+        (handleQuant)="handleIncDecFunctionality($event)"></app-cart-card>
+</section>
+<section *ngIf="isReedemed===false" class="checkout-discount">
+    <p>Redeem Your Loyalty Points: {{loyaltyBalance}}</p>
+    <a class="btn-order-cart" (click)="changeTotalPrice()">Use Now</a>
+</section>
+<section class="checkout-view">
+    <p>Proceed To Pay: ${{sumTotal}}</p>
+    <a class="btn-order-cart" (click)="placeOrder()">PLACE ORDER</a>
+</section>

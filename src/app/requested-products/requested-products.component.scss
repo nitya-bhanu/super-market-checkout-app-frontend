@@ -1,0 +1,15 @@
+section{
+    display: flex;
+    justify-content: center;
+    table{
+        width: 40vw;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    div{
+        table{
+            width: 40vw;
+        }
+    }
+}
+
+

@@ -1,0 +1,24 @@
+<section>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email-Id</th>
+          <th scope="col">Phone No.</th>
+          <th scope="col">Loyalty Balance</th>
+          <th scope="col">Role</th>
+          <th scope="col">Make Admin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of productDisplayData">
+          <th scope="row">{{item.name}}</th>
+          <td>{{item.emailId}}</td>
+          <td>{{item.phoneNumber}}</td>
+          <td>{{item.loyaltyBalance}}</td>
+          <td>{{item.role}}</td>
+          <td *ngIf="item.role==='user'" class="make-admin"><button (click)="setUserAsAdmin(item.userId)">Y</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>

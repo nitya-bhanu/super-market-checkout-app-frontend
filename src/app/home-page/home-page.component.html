@@ -1,0 +1,74 @@
+<nav>
+    <div class="collapsible d-flex justify-content-between">
+        <button class="btn btn-outline-light" (click)="handleToggle()">Filters &nbsp;<i *ngIf="!isActive"
+                class="bi bi-chevron-down"></i> <i *ngIf="isActive" class="bi bi-chevron-up"></i></button>
+        <button class="btn btn-outline-light" [routerLink]="['/cart']">
+            <i class="bi-cart-fill me-1"></i>
+            Cart
+            <span id="cart-pill-number" class="badge bg-dark text-white ms-1 rounded-pill"></span>
+        </button>
+        <div class="last-btns">
+            <button class="btn btn-outline-light"><a class="nav-link" [routerLink]="['/product-request']">Product
+                    Request</a></button>
+            <button class="btn btn-outline-light" (click)="logOutFromWindow()"><a class="nav-link">Log Out</a></button>
+        </div>
+
+    </div>
+    <div class="content d-flex-column" [ngStyle]="{'height':isActive?'40vh':'0vh','opacity':isActive?'1':'0'}">
+
+        <div class="upper-tag d-flex justify-content-around">
+            <form class="form-inline my-2 my-lg-0 search-bar-custom" [formGroup]="setFieldsAndQueryForm">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search Products" aria-label="Search"
+                    formControlName="searchQueryValueFormName">
+            </form>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div class="category">
+                <p>| Sort By |</p>
+                <a>| Normal |</a>
+                <a (click)="selectCategory('men\'s clothing')"> Men </a>
+                <a (click)="selectCategory('women\'s clothing')"> Women </a>
+                <a (click)="selectCategory('kids')"> Kids </a>
+                <a (click)="selectCategory('daily essentials')"> Daily Essentials </a>
+            </div>
+
+            <div class="filter">
+                <p>| Sort By |</p>
+                <a>| Normal |</a>
+                <a (click)="selectOrderByField('price')"> Price </a>
+                <a (click)="selectOrderByField('quantity')"> Quantity </a>
+                <a (click)="selectOrderByField('discount')"> Discounts </a>
+                <a (click)="selectOrderByField('title')"> Name </a>
+            </div>
+
+            <div class="sortManner">
+                <p>| Sort Direction |</p>
+                <a (click)="selectOrderManner('asc')">Ascending</a>
+                <a (click)="selectOrderManner('desc')">Descending</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- Header -->
+<header class="bg-dark py-5" [ngStyle]="{'display':isActive?'none':'block','opacity':isActive?'0':'1'}">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 text-black fw-bolder">Shop in style</h1>
+            <p class="lead fw-normal text-black-50 mb-0">With this cart checkout</p>
+        </div>
+    </div>
+</header>
+<!-- Section-->
+<section class="custom-section">
+    <app-card *ngFor="let item of productsData" [FetchedProducts]="item" [checkTag]="displayToken"
+        (cartTrigger)="handleCartIcon($event)"></app-card>
+</section>
+<mat-paginator [length]="productsData.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page" (page)="handlePagination($event)">
+</mat-paginator>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+    </div>
+</footer>

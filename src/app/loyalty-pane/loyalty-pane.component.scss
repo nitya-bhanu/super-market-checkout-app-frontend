@@ -1,0 +1,22 @@
+section{
+    margin-left: 10px;
+    text-align: center;
+    padding: 10px;
+    height: 30vh;
+    width: 40vw;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    table {
+        margin: 10px;
+        font-size: 14px;
+        width: 35vw;
+        input{
+            width: 3vw;
+        }
+    }
+}
+
+::-webkit-scrollbar {
+    display: none;
+}

@@ -1,0 +1,103 @@
+.display-pane {
+    font-family: 'Helvetica Neue';
+    display: flex;
+    align-items: center;
+    height: 70vh;
+    margin-top: 60px;
+
+    justify-content: space-between;
+
+    .left-side {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 77vh;
+
+        .greetings {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 250px;
+            height: 100px;
+            align-items: center;
+            display: flex;
+            margin-left: 20px;
+
+            .clock {
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                color: #17D4FE;
+                font-size: 25px;
+                font-family: Orbitron;
+                letter-spacing: 7px;
+            }
+        }
+        .left-side-pane {
+            height: 55vh;
+            color: white;
+            margin-left: 20px;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            text-align: center;
+
+            a {
+                color: white;
+                text-decoration: none;
+                list-style: none;
+                font-size: 19px;
+            }
+        }
+
+    }
+
+    .right-side-pane {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 77vh;
+
+        .current-month-sales {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 220px;
+            height: 120px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .past-month-sales {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 220px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            height: 120px;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        table {
+            width: 25vw;
+            text-align: center;
+        }
+    }
+}
+
+.table-req{
+    margin-right: 20px;
+    height: 35vh;
+    overflow-y: scroll;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+::-webkit-scrollbar{
+    display: none;
+}

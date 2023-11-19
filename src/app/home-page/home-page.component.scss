@@ -1,0 +1,99 @@
+section.custom-section {
+  padding-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  // background-color: #f0eeed;
+  background-color: rgba(249, 249, 249, 0.888);
+}
+
+.collapsible-btn {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 6px;
+}
+
+.collapsible-btn:hover {
+  color: white;
+  border: 1px solid;
+  border-color: white;
+}
+
+.collapsible {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  justify-content: space-between;
+}
+
+.content {
+  opacity: 0;
+  padding: 0 18px;
+  height: 0vh;
+  overflow: hidden;
+  transition-duration: 0.5s;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  text-align: center;
+
+  .upper-tag{
+    margin-top: 40px;
+    form{
+      margin-left: 10vw;
+      width: 30vw;
+    }
+  }
+
+  .category p,
+  .category a,
+  .filter p,
+  .filter a,
+  .sortManner p,
+  .sortManner a {
+    font-weight: lighter;
+    padding: 5px;
+  }
+
+  .category p:hover,
+  .category a:hover,
+  .filter p:hover,
+  .filter a:hover,
+  .sortManner a:hover,
+  .sortManner p:hover {
+    cursor: pointer;
+    font-weight: normal;
+  }
+}
+
+header {
+  margin-top: 30px;
+  background: url('https://static.ubertheme.com/blog/2020/9/carousel_examples_and_takeaways/made_carousel.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  opacity: 0.6;
+  transition-duration: 0.5s;
+
+  .text-center {
+    opacity: 0.6;
+    color: black;
+    background-color: white;
+  }
+}
+
+.last-btns{
+  display: flex;
+  justify-content: space-around;
+  .btn{
+    margin-left: 5px;
+  }
+}
+
+// https://assets-global.website-files.com/605826c62e8de87de744596e/62b5a9572dab880f81c5d178_ajVzMkY7zNN-cU8hLJlTXR93WXkC09AI_0Dm-VBCfWe-kbHdRAAATBpSlNajuRsW7e0jHYCOVjdcHY1Sf-3X4tAI22KAFbbu31rgYGEmgCSV_WUrLFWhWl09ddXm7EhIITjKG0OggdxALfJeGQ.jpeg

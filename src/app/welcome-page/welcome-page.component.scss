@@ -1,0 +1,25 @@
+.title-bar{
+    background-color: #6B4D57;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    .make-bet{
+        display: flex;
+        flex-direction: column;
+        button{
+            width: 150px;
+            height: 40px;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+    }
+    .title{
+        width: 800px;
+        margin-left: 20px;
+    }
+    p{
+        margin:0px;
+        color:#EFF9F0;
+        font-size: 60px;
+    }
+}

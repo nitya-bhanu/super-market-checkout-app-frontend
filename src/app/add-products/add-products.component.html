@@ -1,0 +1,39 @@
+<app-home-navbar></app-home-navbar>
+<section>
+    <div class="container">
+        <div class="title">Registration</div>
+        <div class="content">
+          <form [formGroup]="productUpdateForm">
+            <div class="user-details">
+              <div class="input-box">
+                <span class="details">Product Title</span>
+                <input type="text" name="" required="" formControlName="title">
+              </div>
+              <div class="input-box">
+                <span class="details">Quantity</span>
+                <input type="number" name="" required="" formControlName="quantity">
+              </div>
+              <div class="input-box">
+                <span class="details">Price</span>
+                <input type="number" name="" required="" formControlName="price">
+              </div>
+              <div class="input-box">
+                <span class="details">Category</span>
+                <input type="text" name="" required="" formControlName="category">
+              </div>
+              <div class="input-box">
+                <span class="details">Description</span>
+                <input type="text" name="" required="" formControlName="description">
+              </div>
+              <div class="input-box">
+                <span class="details">Image Url</span>
+                <input type="text" name="" required="" formControlName="imageUrl">
+              </div>
+            </div>
+            <div class="button">
+              <input type="submit" value="Register" (click)="submitForm()">
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>

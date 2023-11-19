@@ -1,0 +1,22 @@
+section.cart-view{
+    background-color: #f0eeed;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+a.btn-order-cart:hover{
+    cursor: pointer;
+}
+
+.checkout-view{
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+.checkout-discount{
+    background-color:rgb(144, 187, 81);
+    color: white;
+    text-align: center;
+}

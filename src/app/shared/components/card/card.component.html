@@ -1,0 +1,19 @@
+<div class="outer">
+    <div class="content animated fadeInLeft">
+        <!-- <span class="bg animated fadeInDown">EXCLUSIVE</span> -->
+        <h1>{{FetchedProducts.title.length > 40 ? FetchedProducts.title.slice(0, 40).trim()
+            + '...' : FetchedProducts.title}}</h1>
+        <p>{{FetchedProducts.description.length > 150 ? FetchedProducts.description.slice(0, 150).trim()
+            + '...' : FetchedProducts.description}}</p>
+
+        <div class="button">
+            <a href="#">$ {{FetchedProducts.price}}</a>
+            <a type="button" [routerLink]="(['/single-pane',FetchedProducts.prodId])">View More</a>
+            <div></div>
+            <a *ngIf="checkTag=='user'" class="cart-btn" [id]="FetchedProducts.prodId" (click)="addToCart(FetchedProducts.prodId)">ADD TO CART</a>
+            <a *ngIf="checkTag=='admin'" class="cart-btn" [routerLink]="['/updateProduct']">UPDATE
+                PRODUCT</a>
+        </div>
+    </div>
+    <img src="{{FetchedProducts.imageUrl}}" width="300px" class="animated fadeInRight">
+</div>
