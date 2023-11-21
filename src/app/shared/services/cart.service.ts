@@ -11,39 +11,39 @@ export class CartService {
 
 
   //getting the cart details of a particular user
-  getCartDetails(userId:string):Observable<any>{
-    return this.http.get(`http://localhost:8080/cart?userId=${userId}`);
+  getCartDetails(userId:string):Observable<cartSchema>{
+    return this.http.get<cartSchema>(`http://localhost:8080/cart?userId=${userId}`);
   }
 
   //updating and posting the cart data
   postCartDetails(cartSchema:cartSchema):Observable<any>{
     console.log(cartSchema);
-    return this.http.post(`http://localhost:8080/cart`,cartSchema);
+    return this.http.post<any>(`http://localhost:8080/cart`,cartSchema);
   }
 
   //updating the data
-  putCartDetails(userId:string,productId:string,argument:string):Observable<any>{
-    return this.http.put(`http://localhost:8080/cart?userId=${userId}&productId=${productId}&argument=${argument}`,"");
+  putCartDetails(userId:string,productId:string,argument:string):Observable<cartSchema>{
+    return this.http.put<cartSchema>(`http://localhost:8080/cart?userId=${userId}&productId=${productId}&argument=${argument}`,"");
   }
 
   //removing the cart item product wise, in short doing the remove item function
-  deleteCartDetails(userId:string,productId:string):Observable<any>{
-    return this.http.delete(`http://localhost:8080/cart?userId=${userId}&productId=${productId}&argument`);
+  deleteCartDetails(userId:string,productId:string):Observable<null>{
+    return this.http.delete<null>(`http://localhost:8080/cart?userId=${userId}&productId=${productId}&argument`);
   }
 
   //deleting the whole cart, useful in after payment services
-  deleteWholeCart(userId:string):Observable<any>{
-    return this.http.delete(`http://localhost:8080/cart/${userId}`);
+  deleteWholeCart(userId:string):Observable<null>{
+    return this.http.delete<null>(`http://localhost:8080/cart/${userId}`);
   }
 
   //getting the total cart products calculated money
-  getTotalCartMoney(userId:string):Observable<any>{
-    return this.http.get(`http://localhost:8080/cart/cartTotal/${userId}`);
+  getTotalCartMoney(userId:string):Observable<number>{
+    return this.http.get<number>(`http://localhost:8080/cart/cartTotal/${userId}`);
   }
 
   //getting the cart total money to display in cart icon at home page
-  getTotalcartLength(userId:string):Observable<any>{
-    return this.http.get(`http://localhost:8080/cart/cartLength/${userId}`);
+  getTotalcartLength(userId:string):Observable<number>{
+    return this.http.get<number>(`http://localhost:8080/cart/cartLength/${userId}`);
   }
 
 }

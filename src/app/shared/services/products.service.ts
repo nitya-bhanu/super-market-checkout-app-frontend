@@ -30,16 +30,16 @@ export class ProductsService {
 
   //updating the products 
   updateProducts(productId:string,product:prodcutsSchema):Observable<any>{
-    return this.http.put(`http://localhost:8080/product/${productId}`,product);
+    return this.http.put<any>(`http://localhost:8080/product/${productId}`,product);
   }
 
   //deleting the products by id 
   deleteProductById(productId:string):Observable<any>{
-    return this.http.delete(`http://localhost:8080/product/${productId}`);
+    return this.http.delete<any>(`http://localhost:8080/product/${productId}`);
   }
 
   //adding products to db if admin wants to
   addProducts(product:any):Observable<any>{
-    return this.http.post(`http://localhost:8080/product`,product);
+    return this.http.post<any>(`http://localhost:8080/product`,product);
   }
 }

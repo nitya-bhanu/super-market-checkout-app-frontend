@@ -10,18 +10,18 @@ export class LoyaltyService {
   constructor(private http:HttpClient) { }
 
   //getting all the loyalty points database points
-  getAllLoyaltyPoints():Observable<any>{
-    return this.http.get(`http://localhost:8080/loyalty`);
+  getAllLoyaltyPoints():Observable<Array<LoyaltyScehma>>{
+    return this.http.get<Array<LoyaltyScehma>>(`http://localhost:8080/loyalty`);
   }
 
   //updating loyalty points against several levels of loyalty
-  updateLoyaltyPoints(e:LoyaltyScehma):Observable<any>{
-    return this.http.post(`http://localhost:8080/loyalty`,e);
+  updateLoyaltyPoints(e:LoyaltyScehma):Observable<null>{
+    return this.http.post<null>(`http://localhost:8080/loyalty`,e);
   }
 
   //getting the loyalty discount on the basis of loyalty points of certain user
-  getLoyaltyWiseDiscountValue(e:number):Observable<any>{
-    return this.http.get(`http://localhost:8080/loyalty/${e}`);
+  getLoyaltyWiseDiscountValue(e:number):Observable<number>{
+    return this.http.get<number>(`http://localhost:8080/loyalty/${e}`);
   }
 
 }
