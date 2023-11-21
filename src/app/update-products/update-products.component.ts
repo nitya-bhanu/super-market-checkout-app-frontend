@@ -18,6 +18,8 @@ export class UpdateProductsComponent implements OnInit {
       // console.log(p['prodId']);
       this.productId = p['prodId'];
     })
+
+    //generating form builder
     this.productUpdateForm = this.formbuilder.group({
       prodId: this.formbuilder.control(this.productId),
       quantity: this.formbuilder.control(1),
@@ -53,6 +55,7 @@ export class UpdateProductsComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  //deleting products from supermarket inventory
   deleteProduct() {
     this.productService.deleteProductById(this.productId).subscribe({
       next: (res) => {

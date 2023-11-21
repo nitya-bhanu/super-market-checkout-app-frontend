@@ -28,6 +28,7 @@ export class SignInComponent implements OnInit{
     })
   }
 
+  //getting the signed in user details 
   getUserDetails(){
     this.getSignInUpService.getUserResponse(this.signInForm.controls['emailID'].value,this.signInForm.controls['password'].value).subscribe({
       next: (resp) => {

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ProductsService } from '../shared/services/products.service';
 
 @Component({
@@ -8,11 +8,15 @@ import { ProductsService } from '../shared/services/products.service';
   templateUrl: './add-products.component.html',
   styleUrls: ['./add-products.component.scss']
 })
-export class AddProductsComponent {
+export class AddProductsComponent implements OnInit{
+
   productUpdateForm!: FormGroup;
   constructor(private formbuilder: FormBuilder, private router: Router, private productService: ProductsService) { }
 
+
   ngOnInit(): void {
+
+    //initialising the form builder
     this.productUpdateForm = this.formbuilder.group({
       quantity: this.formbuilder.control(1),
       price: this.formbuilder.control(0.0),
@@ -23,6 +27,7 @@ export class AddProductsComponent {
     })
   }
 
+  //submitting the add prodcuts form 
   submitForm() {
     console.log(this.productUpdateForm);
     const prod = {
@@ -44,6 +49,7 @@ export class AddProductsComponent {
         console.log(res);
       }
     });
+    //navigating back to admin page whiich has all the products listed
     this.router.navigate(['admin-page']);
   }
 }

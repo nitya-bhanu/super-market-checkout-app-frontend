@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SinglePageComponent implements OnInit {
   productsList!: Array<prodcutsSchema>;
   FetchedProduct!: prodcutsSchema
-  category:string='';
+  category='';
   constructor(private productService: ProductsService, private route: Router, private activatedRoute: ActivatedRoute) {
 
   }
@@ -23,6 +23,8 @@ export class SinglePageComponent implements OnInit {
     })
   }
 
+
+  //fetching the products by ID
   getSingleProduct(id: string) {
     return this.productService.getProductById(id).subscribe({
       next: (resp) => {
@@ -32,6 +34,8 @@ export class SinglePageComponent implements OnInit {
       }
     })
   }
+
+  //getting all the products 
   getAllProducts() {
     return this.productService.getProducts(0, 100, 'asc', '', this.category, '').subscribe({
       next: (resp) => {

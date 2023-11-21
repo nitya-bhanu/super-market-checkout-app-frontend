@@ -1,3 +1,5 @@
+import { GenericResponse } from "./genericProductResponse";
+
 export interface userSchema{
     userId:string;
     role:string;
@@ -5,4 +7,7 @@ export interface userSchema{
     emailId:string;
     phoneNumber:string;
     loyaltyBalance:number;
+}
+export interface GenericUserResponse extends GenericResponse{
+    data:userSchema
 }

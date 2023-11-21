@@ -19,6 +19,7 @@ export class LoyaltyPaneComponent implements OnInit {
     this.getLoyalties();
   }
 
+  //getting all the loyalty criterias
   getLoyalties() {
     this.loyaltyService.getAllLoyaltyPoints().subscribe({
       next: (resp) => {
@@ -30,10 +31,12 @@ export class LoyaltyPaneComponent implements OnInit {
     })
   }
 
+  //setting up the value of discounts to be updated 
   onKeySetValue(e:any){
     this.loyaltyNewValue=e.target.value;
   }
 
+  //setting up the updated loyalty discounts
   setLoyalty(loyaltyId:string,levelValue:number){
     const x={
       levelValue:levelValue,

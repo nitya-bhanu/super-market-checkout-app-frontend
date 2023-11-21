@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RequestProductService } from '../shared/services/request-product.service';
@@ -8,11 +8,13 @@ import { RequestProductService } from '../shared/services/request-product.servic
   templateUrl: './product-request.component.html',
   styleUrls: ['./product-request.component.scss']
 })
-export class ProductRequestComponent {
+export class ProductRequestComponent implements OnInit{
   productUpdateForm!: FormGroup;
   constructor(private formbuilder: FormBuilder, private router: Router, private requestProductService: RequestProductService) { }
 
   ngOnInit(): void {
+
+    //generating the form builder
     this.productUpdateForm = this.formbuilder.group({
       quantity: this.formbuilder.control(1),
       title: this.formbuilder.control(''),
@@ -21,6 +23,7 @@ export class ProductRequestComponent {
     })
   }
 
+  //submitting the form 
   submitForm() {
     console.log(this.productUpdateForm);
     const prod = {

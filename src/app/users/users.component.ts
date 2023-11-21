@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit{
 
   productDisplayData!: Array<userSchema>;
 
@@ -31,6 +31,7 @@ export class UsersComponent {
     })
   }
 
+  //allowing admin to set users as admin <employee to be more precise>
   setUserAsAdmin(userId:string){
     this.userServices.setUserAsAdmin(userId).subscribe({
       next:(resp)=>{

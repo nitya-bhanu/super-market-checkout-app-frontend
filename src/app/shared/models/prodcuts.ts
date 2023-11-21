@@ -1,4 +1,4 @@
-import { GenericProductsResponse } from "./genericProductResponse";
+import { GenericResponse } from "./genericProductResponse";
 
 export interface prodcutsSchema{
     prodId:string;
@@ -10,9 +10,9 @@ export interface prodcutsSchema{
     description:string;
     imageUrl:string;
 }
-export interface GetProductsSchemaData extends GenericProductsResponse{
+export interface GetProductsSchemaData extends GenericResponse{
     data:prodcutsSchema[]
 }
-export interface GetSingleProductsSchemaData extends GenericProductsResponse{
+export interface GetSingleProductsSchemaData extends GenericResponse{
     data:prodcutsSchema;
 }

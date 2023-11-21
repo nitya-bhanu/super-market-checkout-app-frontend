@@ -25,22 +25,12 @@ export class AdminDashboardComponent implements OnInit {
   constructor(private requestedProductServices: RequestProductService, private orderService: OrderService) { }
 
   ngOnInit(): void {
-    this.getGreetings();
     this.getRequestedProducts();
     this.getAllOrders();
     this.setDigitalTime();
   }
-  getGreetings() {
-    var myDate = new Date();
-    var hrs = myDate.getHours();
-    if (hrs < 12)
-      this.greetings = 'Good Morning!';
-    else if (hrs >= 12 && hrs <= 17)
-      this.greetings = 'Good Afternoon!';
-    else if (hrs >= 17 && hrs <= 24)
-      this.greetings = 'Good Evening!';
-  }
 
+  //listing all the prodcuts requested by users
   getRequestedProducts() {
     this.requestedProductServices.getRequestedProducts().subscribe({
       next: (resp) => {
@@ -52,7 +42,7 @@ export class AdminDashboardComponent implements OnInit {
     })
   }
 
-
+  //getting all the orders till date
   getAllOrders() {
     this.orderService.getAllOrders().subscribe({
       next: (resp) => {
@@ -65,24 +55,41 @@ export class AdminDashboardComponent implements OnInit {
     })
   }
 
+  //filtering orders month wise, pushing them into each month's array
   setMonthlyOrders() {
 
     this.currentMonthtotal = 0;
     this.pastMonthTotal = 0;
 
-    var myDate = new Date();
-    var month = myDate.getMonth();
+    const myDate = new Date();
+    let month = myDate.getMonth();
 
     this.currentMonthOrders = [];
     this.pastMonthSchema = [];
 
     this.allOrders.forEach(e => {
-      let x = e.orderDate.slice(5, 7);
-      if (x === (month - 1).toString()) {
+      const x = e.orderDate.slice(5, 7);
+      month=month++;
+      console.log('CUT ',x);
+      console.log('curr MonthFetch: ',month);
+      let stringcurrMonth='';
+      let stringPrevMonth='';
+      if(month<11){
+        if(month===10){
+          stringcurrMonth=month.toString();
+          stringPrevMonth='0'+(month-1).toString();
+        }
+        else {
+          stringcurrMonth='0'+(month).toString();
+          stringPrevMonth='0'+(month-1).toString();
+        }
+      }
+      
+      if (x ===stringPrevMonth) {
         this.pastMonthSchema.push(e);
         this.pastMonthTotal = e.totalMoney;
       }
-      else if (x === month.toString()) {
+      else if (x === stringcurrMonth) {
         this.currentMonthOrders.push(e);
         this.currentMonthtotal = e.totalMoney;
       }
@@ -90,12 +97,13 @@ export class AdminDashboardComponent implements OnInit {
   }
 
 
+  //setting the time on dashboard of admin as digital clock
   setDigitalTime() {
-    var date = new Date();
-    var h = date.getHours(); // 0 - 23
-    var m = date.getMinutes(); // 0 - 59
-    var s = date.getSeconds(); // 0 - 59
-    var session = "AM";
+    const date = new Date();
+    let h = date.getHours(); // 0 - 23
+    const m = date.getMinutes(); // 0 - 59
+    const s = date.getSeconds(); // 0 - 59
+    let session = "AM";
 
     if (h == 0) {
       h = 12;
@@ -106,11 +114,11 @@ export class AdminDashboardComponent implements OnInit {
       session = "PM";
     }
 
-    let x = (h < 10) ? "0" + h.toString() : h.toString();
-    let y = (m < 10) ? "0" + m : m;
-    let z = (s < 10) ? "0" + s : s;
+    const x = (h < 10) ? "0" + h.toString() : h.toString();
+    const y = (m < 10) ? "0" + m : m;
+    const z = (s < 10) ? "0" + s : s;
 
-    var time = x + ":" + y + ":" + z + " " + session;
+    const time = x + ":" + y + ":" + z + " " + session;
     document.getElementById("MyClockDisplay")!.innerText = time;
     document.getElementById("MyClockDisplay")!.textContent = time;
 

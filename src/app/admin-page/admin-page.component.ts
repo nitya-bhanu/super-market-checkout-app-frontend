@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { prodcutsSchema } from '../shared/models/prodcuts';
 import { ProductsService } from '../shared/services/products.service';
@@ -11,19 +11,18 @@ import { Router } from '@angular/router';
   templateUrl: './admin-page.component.html',
   styleUrls: ['./admin-page.component.scss']
 })
-export class AdminPageComponent {
-  pageSize: number = 10;
-  pageIndex: number = 0;
-  order: string = 'asc';
-  orderCriteria: string = 'title';
-  categoryName: string = '';
-  searchValue: string = '';
+export class AdminPageComponent implements OnInit{
+
+  pageSize = 10;
+  pageIndex= 0;
+  order= 'asc';
+  orderCriteria = 'title';
+  categoryName = '';
+  searchValue = '';
   setFieldsAndQueryForm!: FormGroup;
   productsData!: prodcutsSchema[];
   displayToken='admin';
-  nextElementSibling: any;
-  classList: any;
-  isActive:boolean=false;
+  isActive=false;
 
   constructor(private getProductServices: ProductsService, private formBuilder: FormBuilder,private sharedServices:SharedDataService,private router:Router) { }
 
@@ -33,6 +32,7 @@ export class AdminPageComponent {
   }
 
 
+  //initialising the forms builder
   initialiseForm(): void {
     this.setFieldsAndQueryForm = this.formBuilder.group({
       categoryFieldFormName: this.formBuilder.control(''),
@@ -43,6 +43,7 @@ export class AdminPageComponent {
     this.setFormSubscription();
   }
 
+  //subscribing to the form change
   setFormSubscription():void{
     this.setFieldsAndQueryForm.valueChanges.pipe(debounceTime(500)).subscribe(e=>{
       console.log("value of other fields: ",e.searchQueryValueFormName);
@@ -61,6 +62,7 @@ export class AdminPageComponent {
     })
   }
 
+  //getting all the products listed in database
   getProducts(pageIndex: number, pageSize: number, orderManner: string, orderCriteria: string, categoryName: string, searchValue: string): void {
     this.getProductServices.getProducts(pageIndex, pageSize, orderManner, orderCriteria, categoryName, searchValue).subscribe({
       next: (resp) => {
@@ -77,6 +79,7 @@ export class AdminPageComponent {
     })
   }
 
+  //selecting the category from control value 
   selectCategory(catPara:string){
     this.setFieldsAndQueryForm.setValue({
       categoryFieldFormName:catPara,
@@ -87,6 +90,7 @@ export class AdminPageComponent {
     console.log(this.setFieldsAndQueryForm.value);
   }
 
+  //selecting or changing the field form control
   selectOrderByField(orderByPara:string){
     this.setFieldsAndQueryForm.setValue({
       sortByFieldFormName:orderByPara,
@@ -96,6 +100,7 @@ export class AdminPageComponent {
     })
   }
 
+  //selecting the order manner 
   selectOrderManner(orderType:string){
     this.setFieldsAndQueryForm.setValue({
       sortByFieldFormName:this.orderCriteria,
@@ -105,15 +110,18 @@ export class AdminPageComponent {
     })
   }
 
+  //handling the pagination
   handlePagination(e: any) {
     this.getProducts(e.pageIndex,e.pageSize,this.order,this.orderCriteria,this.categoryName,this.searchValue);
   }
 
+  //toggles for the card components
   handleToggle(){
     console.log(this.isActive);
     this.isActive=!this.isActive;
   }
 
+  //logout features implementation
   logOutFromWindow(){
     const x={
       userId: '',

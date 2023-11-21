@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../shared/services/order.service';
 import { orderSchema } from '../shared/models/orders';
 
@@ -7,7 +7,7 @@ import { orderSchema } from '../shared/models/orders';
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.scss']
 })
-export class OrderDetailsComponent {
+export class OrderDetailsComponent implements OnInit{
 
 
   allOrders!: Array<orderSchema>;
@@ -33,7 +33,7 @@ export class OrderDetailsComponent {
 
   }
 
-
+//getting all the orders of the supermaket till date
   getAllOrders() {
     this.orderService.getAllOrders().subscribe({
       next: (resp) => {
@@ -48,6 +48,8 @@ export class OrderDetailsComponent {
     })
   }
 
+
+  //setting up the monthly orders monthwise
   setMonthlyOrders() {
     console.log('New here: ',this.allOrders);
     
@@ -65,7 +67,7 @@ export class OrderDetailsComponent {
     this.decOrders = [];
 
     this.allOrders.forEach(e => {
-      let x = e.orderDate.slice(5, 7);
+      const x = e.orderDate.slice(5, 7);
       if (x === '01')
         this.janOrders.push(e);
       else if (x === '02')

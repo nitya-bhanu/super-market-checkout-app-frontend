@@ -3,7 +3,7 @@ import { ProductsService } from '../shared/services/products.service';
 import { prodcutsSchema } from '../shared/models/prodcuts';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SharedDataService } from '../shared/services/shared-data.service';
-import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -11,12 +11,12 @@ import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router'
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  pageSize: number = 10;
-  pageIndex: number = 0;
-  order: string = 'asc';
-  orderCriteria: string = 'title';
-  categoryName: string = '';
-  searchValue: string = '';
+  pageSize = 10;
+  pageIndex = 0;
+  order = 'asc';
+  orderCriteria = 'title';
+  categoryName = '';
+  searchValue = '';
   setFieldsAndQueryForm!: FormGroup;
   productsData!: prodcutsSchema[];
   displayToken='user';
@@ -34,6 +34,7 @@ export class HomePageComponent implements OnInit {
   }
 
 
+  //initialising the form builder group
   initialiseForm(): void {
     this.setFieldsAndQueryForm = this.formBuilder.group({
       categoryFieldFormName: this.formBuilder.control(''),
@@ -44,6 +45,7 @@ export class HomePageComponent implements OnInit {
     this.setFormSubscription();
   }
 
+  //subscribing to form's value changes 
   setFormSubscription():void{
     this.setFieldsAndQueryForm.valueChanges.subscribe(e=>{
       console.log("value of other fields: ",e.searchQueryValueFormName);
@@ -62,6 +64,7 @@ export class HomePageComponent implements OnInit {
     })
   }
 
+  //getting all the products from database
   getProducts(pageIndex: number, pageSize: number, orderManner: string, orderCriteria: string, categoryName: string, searchValue: string): void {
     this.getProductServices.getProducts(pageIndex, pageSize, orderManner, orderCriteria, categoryName, searchValue).subscribe({
       next: (resp) => {
@@ -78,6 +81,7 @@ export class HomePageComponent implements OnInit {
     })
   }
 
+  //selecting the category from control value 
   selectCategory(catPara:string){
     this.setFieldsAndQueryForm.setValue({
       categoryFieldFormName:catPara,
@@ -88,6 +92,7 @@ export class HomePageComponent implements OnInit {
     console.log(this.setFieldsAndQueryForm.value);
   }
 
+  //selecting or changing the field form control
   selectOrderByField(orderByPara:string){
     this.setFieldsAndQueryForm.setValue({
       sortByFieldFormName:orderByPara,
@@ -97,25 +102,30 @@ export class HomePageComponent implements OnInit {
     })
   }
 
+  //selecting the order manner 
   selectOrderManner(orderType:string){
     this.setFieldsAndQueryForm.setValue({
       orderMannerFormName:orderType
     })
   }
 
+  //handling the pagination
   handlePagination(e: any) {
     this.getProducts(e.pageIndex,e.pageSize,this.order,this.orderCriteria,this.categoryName,this.searchValue);
   }
 
+  //toggles for the card components
   handleToggle(){
     console.log(this.isActive);
     this.isActive=!this.isActive;
   }
 
+  //updating cart icon in case one adds something
   handleCartIcon(e:number){
     document.getElementById('cart-pill-number')!.innerText=e.toString();
   }
 
+  //logout from the account
   logOutFromWindow(){
     const x={
       userId: '',

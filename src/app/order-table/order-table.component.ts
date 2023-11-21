@@ -8,12 +8,16 @@ import { Chart } from 'chart.js/auto';
   templateUrl: './order-table.component.html',
   styleUrls: ['./order-table.component.scss']
 })
+
+
+//generating bar chart for visualisation
 export class OrderTableComponent implements OnInit {
 
 
   orderData!: Array<orderSchema>;
-  greetings:string='';
+  greetings='';
   public chart: any;
+  monthBool=false;
 
   monthlyData=[{
     month:'',
@@ -32,15 +36,21 @@ export class OrderTableComponent implements OnInit {
         this.orderData = resp
         this.orderData.forEach(e=>{
           let countIn=0;
-          let x=e.orderDate.slice(5,7);
+          const x=e.orderDate.slice(5,7);
           this.orderData.forEach(p=>{
             if(x===p.orderDate.slice(5,7))
             countIn++;
           })
-          let pushObject={
+          const pushObject={
             month:x,
             count:countIn
           }
+          this.monthlyData.forEach(e=>{
+            if(e.month===pushObject.month){
+              this.monthBool=true;
+            }
+          })
+          if(this.monthBool===false)
           this.monthlyData.push(pushObject);
         })
         this.chart=new Chart('acquisitions',

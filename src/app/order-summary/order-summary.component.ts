@@ -10,8 +10,10 @@ import { userSchema } from '../shared/models/user';
   templateUrl: './order-summary.component.html',
   styleUrls: ['./order-summary.component.scss']
 })
-export class OrderSummaryComponent implements OnInit {
 
+
+//generating invoice receipt
+export class OrderSummaryComponent implements OnInit {
   productsAndQuantity!: Array<prodcutsList>
   userDetails: userSchema={
     userId: '',
@@ -26,11 +28,11 @@ export class OrderSummaryComponent implements OnInit {
   day = this.date.getDate();
   month = this.date.getMonth() + 1;
   year = this.date.getFullYear();
-  // This arrangement can be altered based on how we want the date's format to appear.
-  currentDate = `${this.day}-${this.month}-${this.year}`;
-  constructor(private userService: UserService, private cartServices: CartService, private sharedDataService: SharedDataService) {
 
+  currentDate = `${this.day}-${this.month}-${this.year}`;
+  constructor(private sharedDataService: SharedDataService) {
   }
+
 
   ngOnInit(): void {
     this.setSumTotal();

@@ -16,20 +16,21 @@ interface exportCartData {
   argument: string
 }
 
-declare var Razorpay: any;
+declare const Razorpay: any;
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
+
 export class CartComponent implements OnInit, AfterViewInit {
   sumTotal = 0;
   productsData!: cartSchema;
   products!: Array<prodcutsList>
   productsDisplayData: prodcutsSchema[] | undefined;
   userDetails!: userSchema;
-  userId: string = '';
+  userId = '';
   loyaltyBalance = 0;
   isReedemed = false;
   constructor(private cartService: CartService, private productService: ProductsService, private orderService: OrderService, private sharedDataService: SharedDataService, private userService: UserService, private router: Router,private loyaltyService:LoyaltyService) { }
@@ -40,12 +41,14 @@ export class CartComponent implements OnInit, AfterViewInit {
     // console.log('useeeer:', this.userId);
   }
 
+
   ngAfterViewInit(): void {
     this.getTotalCartMoney(this.userId);
     this.handleCartDetailSubscriber();
     this.getUserInfo(this.userId);
   }
 
+  //getting the user info which will order the products 
   getUserInfo(userId: string) {
     this.userService.getUserDetails(userId).subscribe({
       next: (resp: userSchema) => {
@@ -59,6 +62,7 @@ export class CartComponent implements OnInit, AfterViewInit {
     })
   }
 
+  //getting sum total of whole cart products price
   getTotalCartMoney(userId: string) {
     this.cartService.getTotalCartMoney(userId).subscribe({
       next: (resp) => {
@@ -72,6 +76,7 @@ export class CartComponent implements OnInit, AfterViewInit {
     })
   }
 
+  //handling whatever has been updated or added to the cart
   handleCartDetailSubscriber() {
     this.cartService.getCartDetails(this.userId).subscribe({
       next: (resp) => {
@@ -87,6 +92,7 @@ export class CartComponent implements OnInit, AfterViewInit {
     })
   }
 
+  //handling the increase and decrease of products
   handleIncDecFunctionality(e: exportCartData) {
     this.cartService.putCartDetails(e.userId, e.prodId, e.argument).subscribe({
       next: (resp) => {
@@ -100,6 +106,7 @@ export class CartComponent implements OnInit, AfterViewInit {
     })
   }
 
+  //placing the order 
   placeOrder() {
     const keepCartData = {
       userName: this.userDetails.name,
@@ -113,6 +120,7 @@ export class CartComponent implements OnInit, AfterViewInit {
     console.log('Success');
 
 
+    //declaring the razorpay options object
     const RozarpayOptions = {
       description: 'Sample Razorpay demo',
       currency: 'INR',
@@ -130,7 +138,7 @@ export class CartComponent implements OnInit, AfterViewInit {
         color: '#000000'
       },
       handler:()=>{
-        this.performReaminigFunctions()
+        this.performReamainingFunctions()
       },
       modal: {
         ondismiss: () => {
@@ -142,7 +150,8 @@ export class CartComponent implements OnInit, AfterViewInit {
   }
 
 
-  performReaminigFunctions() {
+  //performing after payout functions like deleting cart data, redirecting to invoice receipt generation
+  performReamainingFunctions() {
     const keepCartData = {
       userName: this.userDetails.name,
       userEmailId: this.userDetails.emailId,
@@ -173,6 +182,7 @@ export class CartComponent implements OnInit, AfterViewInit {
     });
   }
 
+  //changint the total price if someone uses the loyalty points to shop
   changeTotalPrice() {
     this.isReedemed = true;
     this.loyaltyService.getLoyaltyWiseDiscountValue(Math.floor(this.loyaltyBalance)).subscribe({

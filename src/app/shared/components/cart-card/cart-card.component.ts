@@ -24,6 +24,8 @@ interface exportCartPreviewData{
 export class CartCardComponent implements OnInit {
   @Input() FetchedProducts!: prodcutsList;
   @Input() userId!: string;
+
+  //cart products quantity emitter
   @Output() handleQuant:EventEmitter<exportCartData>=new EventEmitter();
   @Output() handleexportPreviewData:EventEmitter<exportCartPreviewData>=new EventEmitter();
   displayProducts!: prodcutsSchema;

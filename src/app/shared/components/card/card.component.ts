@@ -1,9 +1,8 @@
-import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { SharedDataService } from '../../services/shared-data.service';
 import { cartSchema } from '../../models/cart';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { NgIf } from '@angular/common';
+import { prodcutsSchema } from '../../models/prodcuts';
 
 @Component({
   selector: 'app-card',
@@ -11,8 +10,11 @@ import { NgIf } from '@angular/common';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
-  @Input() FetchedProducts: any;
-  @Input() checkTag: any;
+
+  @Input() FetchedProducts!: prodcutsSchema;
+  @Input() checkTag!: string;
+
+  //exporting the click event to trigger functions
   @Output() cartTrigger:EventEmitter<number>=new EventEmitter();
 
   cartDetails: cartSchema = {
@@ -26,7 +28,8 @@ export class CardComponent {
 
 
 
-  addToCart(prodId: string) {
+  //adding to cart 
+  addToCart(prodId: string): void {
 
     const x=document.getElementById(prodId);
     x!.innerText='Added';
@@ -46,9 +49,11 @@ export class CardComponent {
         }
       ]
     }
+
+    //posting the cart into cart collections of a particular user
     this.cartService.postCartDetails(this.cartDetails).subscribe({
       next: (res) => {
-        if (res.success = false) {
+        if (res.success=== false) {
           alert("grindddd");
         }
         console.log(res);
@@ -57,6 +62,3 @@ export class CardComponent {
   }
 }
 
-export interface DialogData {
-  metaInfo:any;
-}

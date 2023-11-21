@@ -7,21 +7,25 @@ import { userSchema } from '../models/user';
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getUserDetails(userId:string):Observable<any>{
+  //getting the user details by id
+  getUserDetails(userId: string): Observable<any> {
     return this.http.get(`http://localhost:8080/user/${userId}`);
   }
 
-  getAllUsers():Observable<any>{
+  //getting all the users
+  getAllUsers(): Observable<any> {
     return this.http.get(`http://localhost:8080/user`);
   }
 
-  setUser(user:userSchema){
-    return this.http.post(`http://localhost:8080/user`,user);
+  //setting the user if some one signs in 
+  setUser(user: userSchema) {
+    return this.http.post(`http://localhost:8080/user`, user);
   }
 
-  setUserAsAdmin(userId:string){
-    return this.http.post(`http://localhost:8080/user/setAsAdmin`,userId);
+  //making user the admin 
+  setUserAsAdmin(userId: string) {
+    return this.http.post(`http://localhost:8080/user/setAsAdmin`, userId);
   }
 }
