@@ -16,7 +16,11 @@ export class RequestProductService {
   }
 
   //posting the product requests done by user
-  postRequestProducts(product:any):Observable<any>{
-    return this.http.post<any>(`http://localhost:8080/product_request`,product);
+  postRequestProducts(product:any):Observable<resultProducts>{
+    return this.http.post<resultProducts>(`http://localhost:8080/product_request`,product);
   }
+}
+
+interface resultProducts{
+  success:boolean;
 }

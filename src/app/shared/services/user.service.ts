@@ -10,13 +10,13 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   //getting the user details by id
-  getUserDetails(userId: string): Observable<any> {
-    return this.http.get(`http://localhost:8080/user/${userId}`);
+  getUserDetails(userId: string): Observable<userSchema> {
+    return this.http.get<userSchema>(`http://localhost:8080/user/${userId}`);
   }
 
   //getting all the users
-  getAllUsers(): Observable<any> {
-    return this.http.get(`http://localhost:8080/user`);
+  getAllUsers(): Observable<Array<userSchema>> {
+    return this.http.get<Array<userSchema>>(`http://localhost:8080/user`);
   }
 
   //setting the user if some one signs in 

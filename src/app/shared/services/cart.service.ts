@@ -16,9 +16,9 @@ export class CartService {
   }
 
   //updating and posting the cart data
-  postCartDetails(cartSchema:cartSchema):Observable<any>{
+  postCartDetails(cartSchema:cartSchema):Observable<string>{
     console.log(cartSchema);
-    return this.http.post<any>(`http://localhost:8080/cart`,cartSchema);
+    return this.http.post<string>(`http://localhost:8080/cart`,cartSchema);
   }
 
   //updating the data

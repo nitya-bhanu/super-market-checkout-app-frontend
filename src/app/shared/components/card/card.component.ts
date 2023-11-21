@@ -53,9 +53,6 @@ export class CardComponent {
     //posting the cart into cart collections of a particular user
     this.cartService.postCartDetails(this.cartDetails).subscribe({
       next: (res) => {
-        if (res.success=== false) {
-          alert("grindddd");
-        }
         console.log(res);
       }
     })
