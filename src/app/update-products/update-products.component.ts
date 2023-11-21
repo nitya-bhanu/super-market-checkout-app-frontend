@@ -65,6 +65,6 @@ export class UpdateProductsComponent implements OnInit {
         console.log(res);
       }
     });
-    this.router.navigate(['/']);
+    this.router.navigate(['/admin-page']);
   }
 }

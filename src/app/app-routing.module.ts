@@ -49,7 +49,7 @@ const routes: Routes = [
     component: SinglePageComponent
   },
   {
-    path: "updateProduct",
+    path: "updateProduct/:prodId",
     component: UpdateProductsComponent,
     canActivate:[adminGuard]
   },
