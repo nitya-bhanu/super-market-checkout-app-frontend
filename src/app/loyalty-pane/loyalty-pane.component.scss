@@ -2,7 +2,7 @@ section{
     margin-left: 10px;
     text-align: center;
     padding: 10px;
-    height: 30vh;
+    height: 40vh;
     width: 40vw;
     overflow-y: scroll;
     scroll-behavior: smooth;
@@ -12,9 +12,18 @@ section{
         font-size: 14px;
         width: 35vw;
         input{
-            width: 3vw;
+            width: 5vw;
         }
     }
+}
+
+.yes-btn{
+    height: 4vh;
+   padding: 0;
+   margin-left: 6px;
+}
+.set-disc{
+    font-size: 20px;
 }
 
 ::-webkit-scrollbar {

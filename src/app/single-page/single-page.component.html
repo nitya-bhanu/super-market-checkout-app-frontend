@@ -7,16 +7,17 @@
             <p>Rating: {{FetchedProduct.rating}}</p>
             <p>Category: {{FetchedProduct.category}}</p>
             <div class="button">
-                <a href="#">$ {{FetchedProduct.price}}</a>
+                <a>$ {{FetchedProduct.price}}</a>
             </div>
+            <a id="add-cart-btn" class="btn btn-outline-dark" (click)="addToCart()">ADD TO CART</a>
         </div>
-        <img src="{{FetchedProduct.imageUrl}}">
+        <img src="{{FetchedProduct.imageUrl}}" alt="Singe Product View">
     </div>
     <div class="right-pane">
         <h2>Related Products</h2>
         <div class="inner"  *ngFor="let item of productsList">
                 <h1>{{item.title}}</h1>
-            <img src="{{item.imageUrl}}">
+            <img src="{{item.imageUrl}}" alt="Singe Product View">
         </div>
     </div>
 </section>

@@ -12,12 +12,12 @@ export class RequestProductService {
 
   //getting the products which the users have requested
   getRequestedProducts():Observable<Array<RequestedProductSchema>>{
-    return this.http.get<Array<RequestedProductSchema>>(`http://localhost:8080/product_request`);
+    return this.http.get<Array<RequestedProductSchema>>(`https://checkout-server.up.railway.app/product_request`);
   }
 
   //posting the product requests done by user
-  postRequestProducts(product:any):Observable<resultProducts>{
-    return this.http.post<resultProducts>(`http://localhost:8080/product_request`,product);
+  postRequestProducts(product:RequestedProductSchema):Observable<resultProducts>{
+    return this.http.post<resultProducts>(`https://checkout-server.up.railway.app/product_request`,product);
   }
 }
 

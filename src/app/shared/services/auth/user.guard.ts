@@ -3,7 +3,7 @@ import { CanActivateFn, Router } from '@angular/router';
 
 export const userGuard: CanActivateFn = () => {
   const router=inject(Router);
-  const x=JSON.parse(sessionStorage.getItem('userResponse')!);
+  const x=JSON.parse(localStorage.getItem('userResponse')!);
 
   //returning to sign in page if the user credentials are wrong 
   if(!x.bool)

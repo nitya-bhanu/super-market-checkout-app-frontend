@@ -30,7 +30,7 @@ export class OrderTableComponent implements OnInit {
     this.getAllOrders();
   }
 
-  getAllOrders() {
+  getAllOrders():void {
     this.orderService.getAllOrders().subscribe({
       next: (resp) => {
         this.orderData = resp
@@ -62,7 +62,7 @@ export class OrderTableComponent implements OnInit {
                 {
                   label: 'Orders per Month',
                   data: this.monthlyData.map(row => row.count),
-                  // backgroundColor: 'blue'
+                  backgroundColor: 'black'
                 }
               ],
              

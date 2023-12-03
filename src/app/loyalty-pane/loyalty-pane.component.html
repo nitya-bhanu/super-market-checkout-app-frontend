@@ -13,7 +13,7 @@
             <tr *ngFor="let items of loyaltyList">
                 <th scope="row">{{items.levelValue}}</th>
                 <td>{{items.cashInValue}}</td>
-                <td><input type="number" (keyup)="onKeySetValue($event)"><button (click)="setLoyalty(items.loyaltyId,items.levelValue)">Y</button></td>
+                <td><input type="number" (keyup)="onKeySetValue($event)"><button class="yes-btn btn btn-outline-dark" (click)="setLoyalty(items.loyaltyId,items.levelValue)"><mat-icon class="set-disc">wifi_protected_setup</mat-icon></button></td>
             </tr>
         </tbody>
     </table>

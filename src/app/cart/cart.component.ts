@@ -33,9 +33,9 @@ export class CartComponent implements OnInit, AfterViewInit {
   userId = '';
   loyaltyBalance = 0;
   isReedemed = false;
-  constructor(private cartService: CartService, private productService: ProductsService, private orderService: OrderService, private sharedDataService: SharedDataService, private userService: UserService, private router: Router,private loyaltyService:LoyaltyService) { }
+  constructor(private cartService: CartService, private productService: ProductsService, private orderService: OrderService, private sharedDataService: SharedDataService, private userService: UserService, private router: Router, private loyaltyService: LoyaltyService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     console.log('Here: ', this.sharedDataService.getUserResponse());
     this.userId = this.sharedDataService.getUserResponse().userId;
     // console.log('useeeer:', this.userId);
@@ -49,7 +49,7 @@ export class CartComponent implements OnInit, AfterViewInit {
   }
 
   //getting the user info which will order the products 
-  getUserInfo(userId: string) {
+  getUserInfo(userId: string): void {
     this.userService.getUserDetails(userId).subscribe({
       next: (resp: userSchema) => {
         this.userDetails = resp;
@@ -63,7 +63,7 @@ export class CartComponent implements OnInit, AfterViewInit {
   }
 
   //getting sum total of whole cart products price
-  getTotalCartMoney(userId: string) {
+  getTotalCartMoney(userId: string): void {
     this.cartService.getTotalCartMoney(userId).subscribe({
       next: (resp) => {
         this.sumTotal = 0;
@@ -77,7 +77,7 @@ export class CartComponent implements OnInit, AfterViewInit {
   }
 
   //handling whatever has been updated or added to the cart
-  handleCartDetailSubscriber() {
+  handleCartDetailSubscriber(): void {
     this.cartService.getCartDetails(this.userId).subscribe({
       next: (resp) => {
         this.productsData = resp;
@@ -93,7 +93,7 @@ export class CartComponent implements OnInit, AfterViewInit {
   }
 
   //handling the increase and decrease of products
-  handleIncDecFunctionality(e: exportCartData) {
+  handleIncDecFunctionality(e: exportCartData): void {
     this.cartService.putCartDetails(e.userId, e.prodId, e.argument).subscribe({
       next: (resp) => {
         console.log(resp);
@@ -106,8 +106,15 @@ export class CartComponent implements OnInit, AfterViewInit {
     })
   }
 
+
+  //handle cart removal reload thing 
+  handleRemoveProduct(){
+        this.handleCartDetailSubscriber();
+        this.getTotalCartMoney(this.userId);
+  }
+
   //placing the order 
-  placeOrder() {
+  placeOrder(): void {
     const keepCartData = {
       userName: this.userDetails.name,
       userEmailId: this.userDetails.emailId,
@@ -137,7 +144,7 @@ export class CartComponent implements OnInit, AfterViewInit {
       theme: {
         color: '#000000'
       },
-      handler:()=>{
+      handler: () => {
         this.performReamainingFunctions()
       },
       modal: {
@@ -151,7 +158,7 @@ export class CartComponent implements OnInit, AfterViewInit {
 
 
   //performing after payout functions like deleting cart data, redirecting to invoice receipt generation
-  performReamainingFunctions() {
+  performReamainingFunctions(): void {
     const keepCartData = {
       userName: this.userDetails.name,
       userEmailId: this.userDetails.emailId,
@@ -183,15 +190,15 @@ export class CartComponent implements OnInit, AfterViewInit {
   }
 
   //changint the total price if someone uses the loyalty points to shop
-  changeTotalPrice() {
+  changeTotalPrice(): void {
     this.isReedemed = true;
     this.loyaltyService.getLoyaltyWiseDiscountValue(Math.floor(this.loyaltyBalance)).subscribe({
-      next:(resp)=>{
-        console.log("Discount Value: ",resp);
-        this.sumTotal = this.sumTotal*(resp/100);
+      next: (resp) => {
+        console.log("Discount Value: ", resp);
+        this.sumTotal = this.sumTotal * (resp / 100);
       },
-      error:(err)=>{
-        console.log('Error Finding Discount: ',err);
+      error: (err) => {
+        console.log('Error Finding Discount: ', err);
       }
     })
   }

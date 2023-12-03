@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { orderSchema } from '../models/orders';
 
 
 @Injectable({
@@ -16,35 +17,29 @@ export class SharedDataService {
   };
 
 
-  userResponse: UserResponse = {
-    userId: '',
-    bool: false,
-    role: ''
-  };
+  userResponse!: UserResponse
 
-
-  constructor() { }
 
   //posting up the order data
-  setOrderData(e: orderReceiptSchema) {
+  setOrderData(e: orderReceiptSchema):void {
     this.orderData = e;
-    sessionStorage.setItem('orderData',JSON.stringify(this.orderData));
+    localStorage.setItem('orderData',JSON.stringify(this.orderData));
   }
 
   //setting the user response 
-  setUserResponse(e: UserResponse) {
+  setUserResponse(e: UserResponse):void {
     this.userResponse = e;
-    sessionStorage.setItem('userResponse',JSON.stringify(this.userResponse));
+    localStorage.setItem('userResponse',JSON.stringify(this.userResponse));
   }
 
-  //getting the order data from session storage 
-  getOrderData() {
-    return JSON.parse(sessionStorage.getItem('orderData')!);
+  //getting the order data from local storage 
+  getOrderData():orderSchema {
+    return JSON.parse(localStorage.getItem('orderData')!);
   }
 
-  //getting the user details from session storage like logged in users 
-  getUserResponse() {
-    return JSON.parse(sessionStorage.getItem('userResponse')!);
+  //getting the user details from local storage like logged in users 
+  getUserResponse():UserResponse {
+    return JSON.parse(localStorage.getItem('userResponse')!);
   }
 }
 

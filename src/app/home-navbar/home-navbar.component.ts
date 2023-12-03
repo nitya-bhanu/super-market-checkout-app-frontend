@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-navbar.component.scss']
 })
 export class HomeNavbarComponent {
-
+  
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { userSchema } from '../models/user';
+import { setUserSchema, userSchema } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,21 +11,21 @@ export class UserService {
 
   //getting the user details by id
   getUserDetails(userId: string): Observable<userSchema> {
-    return this.http.get<userSchema>(`http://localhost:8080/user/${userId}`);
+    return this.http.get<userSchema>(`https://checkout-server.up.railway.app/user/${userId}`);
   }
 
   //getting all the users
   getAllUsers(): Observable<Array<userSchema>> {
-    return this.http.get<Array<userSchema>>(`http://localhost:8080/user`);
+    return this.http.get<Array<userSchema>>(`https://checkout-server.up.railway.app/user`);
   }
 
   //setting the user if some one signs in 
-  setUser(user: userSchema) {
-    return this.http.post(`http://localhost:8080/user`, user);
+  setUser(user: setUserSchema):Observable<string> {
+    return this.http.post<string>(`https://checkout-server.up.railway.app/user`, user);
   }
 
   //making user the admin 
   setUserAsAdmin(userId: string) {
-    return this.http.post(`http://localhost:8080/user/setAsAdmin`, userId);
+    return this.http.post(`https://checkout-server.up.railway.app/user/setAsAdmin`, userId);
   }
 }

@@ -2,8 +2,8 @@
     font-family: 'Helvetica Neue';
     display: flex;
     align-items: center;
-    height: 70vh;
-    margin-top: 60px;
+
+    margin-top: 40px;
 
     justify-content: space-between;
 
@@ -12,7 +12,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 77vh;
+        height: 80vh;
 
         .greetings {
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -27,14 +27,15 @@
                 align-items: center;
                 justify-content: center;
                 padding: 20px;
-                color: #17D4FE;
+                color: black;
                 font-size: 25px;
                 font-family: Orbitron;
                 letter-spacing: 7px;
             }
         }
+
         .left-side-pane {
-            height: 55vh;
+            height: 62vh;
             color: white;
             margin-left: 20px;
             background-color: black;
@@ -42,12 +43,23 @@
             flex-direction: column;
             justify-content: space-around;
             text-align: center;
+            padding: 10px;
 
             a {
+                display: flex;
                 color: white;
                 text-decoration: none;
                 list-style: none;
-                font-size: 19px;
+                font-size: 15px;
+                transition-duration: 70ms;
+                p {
+                    margin: 0;
+                }
+            }
+
+            a:hover {
+                color: rgb(234, 234, 234);
+                font-size: 14px;
             }
         }
 
@@ -59,30 +71,44 @@
         justify-content: space-between;
         height: 77vh;
 
-        .current-month-sales {
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-            width: 220px;
-            height: 120px;
-            margin-bottom: 10px;
-            font-size: 18px;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            flex-direction: column;
+        .product-alerts{
+            button.alert-btn{
+               width: 25vw;
+            }
         }
 
-        .past-month-sales {
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-            width: 220px;
-            margin-bottom: 10px;
-            font-size: 18px;
-            height: 120px;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
+        .month-sale-comparison {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            margin-right: 20px;
+
+
+            .current-month-sales {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 12vw;
+                height: 120px;
+                margin-bottom: 10px;
+                font-size: 18px;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .past-month-sales {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 12vw;
+                margin-bottom: 10px;
+                font-size: 18px;
+                height: 120px;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+            }
+
         }
 
         table {
@@ -92,12 +118,13 @@
     }
 }
 
-.table-req{
+.table-req {
     margin-right: 20px;
     height: 35vh;
     overflow-y: scroll;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-::-webkit-scrollbar{
+
+::-webkit-scrollbar {
     display: none;
 }

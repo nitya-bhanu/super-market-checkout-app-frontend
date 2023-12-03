@@ -24,7 +24,7 @@ export class ProductRequestComponent implements OnInit{
   }
 
   //submitting the form 
-  submitForm() {
+  submitForm():void {
     console.log(this.productUpdateForm);
     const prod = {
       category: this.productUpdateForm.value['category'],

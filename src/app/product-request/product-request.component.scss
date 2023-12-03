@@ -10,11 +10,17 @@ section{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  background: linear-gradient(135deg, #111112, #444445);
+}
+.side-container{
+  img{
+    width: 33vw;
+    height: 62vh;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  }
 }
 .container{
-  max-width: 700px;
+  max-width: 500px;
   width: 100%;
   background-color: #fff;
   padding: 25px 30px;

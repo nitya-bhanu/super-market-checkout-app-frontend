@@ -5,10 +5,24 @@
             <h1 class="clock" id="MyClockDisplay"></h1>
         </div>
         <div class="left-side-pane bg-dark">
-            <a [routerLink]="['/dashboard/order-table']">Visualisation Summary</a>
-            <a [routerLink]="['/dashboard/order-details']">Monthly Order Summary</a>
-            <a [routerLink]="['/dashboard/users']">Customer Details</a>
-            <a [routerLink]="['/dashboard/loyalty-points']">Loyalty Setup</a>
+            <a [routerLink]="['/dashboard/order-table']"><i class="bi bi-bar-chart-fill"></i>
+                &nbsp;<p>Visualisation Summary</p>
+            </a>
+            <a [routerLink]="['/dashboard/category-summary']"><mat-icon>view_headline</mat-icon>
+                <p>Category Wise Items</p>
+            </a>
+            <a [routerLink]="['/dashboard/order-details']"><i class="bi bi-calendar"></i>
+                &nbsp;<p>Monthly Order Summary</p>
+            </a>
+            <a [routerLink]="['/dashboard/review']"><mat-icon>reviews</mat-icon>
+                &nbsp; <p>Customer Reviews</p>
+            </a>
+            <a [routerLink]="['/dashboard/users']"><mat-icon>account_box</mat-icon>
+                &nbsp; <p>Customer Details</p>
+            </a>
+            <a [routerLink]="['/dashboard/loyalty-points']"><mat-icon>discount</mat-icon>
+                &nbsp; <p>Loyalty Setup</p>
+            </a>
         </div>
     </div>
 
@@ -17,20 +31,20 @@
     </div>
     <div class="right-side-pane">
 
-        <div class="current-month-sales">
-            Sales This month
-            <br>
-            {{currentMonthtotal}}
-            <span id="boot-icon" class="bi bi-arrow-90deg-up"
-                style="font-size: 29px; color: rgb(0, 128, 55); -webkit-text-stroke-width: 0px; text-shadow: rgb(0, 255, 136) 0px 0px 0px; opacity: 1;"></span>
+        <div class="product-alerts">
+            <button class="alert-btn btn btn-outline-dark" (click)="openProductAlertDialog()">View Product Alerts</button>
         </div>
 
-        <div class="past-month-sales">
-            Sales Past month
-            <br>
-            {{pastMonthTotal}}
-            <span id="boot-icon" class="bi bi-arrow-90deg-down"
-                style="font-size: 29px; color: rgb(255, 55, 55); -webkit-text-stroke-width: 0px; text-shadow: rgb(0, 255, 136) 0px 0px 0px; opacity: 1;"></span>
+        <div class="month-sale-comparison">
+            <div class="current-month-sales">
+                Sales this month
+                <br>Rs. {{currentMonthtotal}}
+            </div>
+
+            <div class="past-month-sales">
+                Sales past month
+                <br>Rs. {{pastMonthTotal}}
+            </div>
         </div>
 
         <div class="table-req">
@@ -43,10 +57,10 @@
                 <tbody>
                     <tr *ngFor="let item of requestedProducts">
                         <td>{{item.title}}</td>
-                        <td><a [routerLink]="[item.title]">View</a></td>
+                        <td><button class="btn btn-outline-dark" (click)="openDialog(item.title)">View</button></td>
                     </tr>
                     <tr>
-                        <td><a [routerLink]="['all']">View All</a></td>
+                        <td colspan="2"><button class="btn btn-outline-dark" (click)="openDialog('all')">View All</button></td>
                     </tr>
                 </tbody>
             </table>

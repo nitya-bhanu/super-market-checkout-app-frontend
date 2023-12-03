@@ -1,3 +1,6 @@
+button.generic-btn{
+  border: none;
+}
 section.custom-section {
   padding-top: 40px;
   display: flex;
@@ -20,6 +23,12 @@ section.custom-section {
   border-color: white;
 }
 
+.option-pane-search{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 .collapsible {
   background-color: black;
   color: white;
@@ -29,7 +38,7 @@ section.custom-section {
   border: none;
   text-align: left;
   outline: none;
-  font-size: 15px;
+  font-size: 10px;
   justify-content: space-between;
 }
 
@@ -44,7 +53,9 @@ section.custom-section {
   text-align: center;
 
   .upper-tag{
-    margin-top: 40px;
+    img{
+      width: 5vw;
+    }
     form{
       margin-left: 10vw;
       width: 30vw;
@@ -52,20 +63,22 @@ section.custom-section {
   }
 
   .category p,
-  .category a,
+  .category button,
   .filter p,
-  .filter a,
+  .filter button,
   .sortManner p,
-  .sortManner a {
+  .sortManner button {
+    border: none;
     font-weight: lighter;
     padding: 5px;
+    background-color: white;
   }
 
   .category p:hover,
-  .category a:hover,
+  .category button:hover,
   .filter p:hover,
-  .filter a:hover,
-  .sortManner a:hover,
+  .filter button:hover,
+  .sortManner button:hover,
   .sortManner p:hover {
     cursor: pointer;
     font-weight: normal;
@@ -93,6 +106,57 @@ header {
   justify-content: space-around;
   .btn{
     margin-left: 5px;
+  }
+}
+
+a.nav-user{
+  text-decoration: none;
+  color:white;
+  font-size: 14px;
+  transition-duration: 100ms;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  p{
+    margin: 0;
+    margin-top: 2px;
+  }
+}
+
+a.nav-user:hover{
+  font-size: 13px;
+  color:rgb(239, 239, 239);
+}
+
+input.search-bar-custom{
+  width: 40vw;
+  font-size: 13px;
+  margin-left: -10vw;
+}
+
+
+.btn-filter{
+  font-size: 14px;
+}
+
+.cart-btn{
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 14px;
+  transition-duration: 100ms;
+}
+.cart-btn:hover{
+  cursor: pointer;
+  font-size: 13px;
+  color: rgb(223, 223, 223);
+}
+
+button.logout-btn{
+  display: flex;
+  font-size: 14px;
+  p{
+    margin: 0;
   }
 }
 

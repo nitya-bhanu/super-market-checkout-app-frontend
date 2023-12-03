@@ -28,7 +28,7 @@ export class AddProductsComponent implements OnInit{
   }
 
   //submitting the add prodcuts form 
-  submitForm() {
+  submitForm() :void{
     console.log(this.productUpdateForm);
     const prod = {
       category: this.productUpdateForm.value['category'],

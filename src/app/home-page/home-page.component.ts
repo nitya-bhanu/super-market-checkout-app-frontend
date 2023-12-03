@@ -82,7 +82,7 @@ export class HomePageComponent implements OnInit {
   }
 
   //selecting the category from control value 
-  selectCategory(catPara:string){
+  selectCategory(catPara:string):void {
     this.setFieldsAndQueryForm.setValue({
       categoryFieldFormName:catPara,
       sortByFieldFormName:this.orderCriteria,
@@ -93,7 +93,7 @@ export class HomePageComponent implements OnInit {
   }
 
   //selecting or changing the field form control
-  selectOrderByField(orderByPara:string){
+  selectOrderByField(orderByPara:string):void {
     this.setFieldsAndQueryForm.setValue({
       sortByFieldFormName:orderByPara,
       categoryFieldFormName:this.categoryName,
@@ -103,30 +103,30 @@ export class HomePageComponent implements OnInit {
   }
 
   //selecting the order manner 
-  selectOrderManner(orderType:string){
+  selectOrderManner(orderType:string):void {
     this.setFieldsAndQueryForm.setValue({
       orderMannerFormName:orderType
     })
   }
 
   //handling the pagination
-  handlePagination(e: any) {
+  handlePagination(e: any):void {
     this.getProducts(e.pageIndex,e.pageSize,this.order,this.orderCriteria,this.categoryName,this.searchValue);
   }
 
   //toggles for the card components
-  handleToggle(){
+  handleToggle():void {
     console.log(this.isActive);
     this.isActive=!this.isActive;
   }
 
   //updating cart icon in case one adds something
-  handleCartIcon(e:number){
-    document.getElementById('cart-pill-number')!.innerText=e.toString();
+  handleCartIcon(e:number):void {
+    document.getElementById('cart-pill-number')!.innerText=(e+1).toString();
   }
 
   //logout from the account
-  logOutFromWindow(){
+  logOutFromWindow():void {
     const x={
       userId: '',
       bool: false,

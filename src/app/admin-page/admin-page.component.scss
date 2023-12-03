@@ -29,8 +29,14 @@ section.custom-section {
   border: none;
   text-align: left;
   outline: none;
-  font-size: 15px;
+  font-size: 14px;
   justify-content: space-between;
+}
+
+.option-pane-search{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .content {
@@ -44,28 +50,28 @@ section.custom-section {
   text-align: center;
 
   .upper-tag{
-    margin-top: 40px;
-    form{
-      margin-left: 10vw;
-      width: 30vw;
+    img{
+      width: 5vw;
     }
   }
 
   .category p,
-  .category a,
+  .category button,
   .filter p,
-  .filter a,
+  .filter button,
   .sortManner p,
-  .sortManner a {
+  .sortManner button {
+    border: none;
     font-weight: lighter;
     padding: 5px;
+    background-color: white;
   }
 
   .category p:hover,
-  .category a:hover,
+  .category button:hover,
   .filter p:hover,
-  .filter a:hover,
-  .sortManner a:hover,
+  .filter button:hover,
+  .sortManner button:hover,
   .sortManner p:hover {
     cursor: pointer;
     font-weight: normal;
@@ -86,6 +92,57 @@ header {
     color: black;
     background-color: white;
   }
+}
+
+
+a.nav-admin{
+  text-decoration: none;
+  color:white;
+  font-size: 14px;
+  transition-duration: 100ms;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  p{
+    margin: 0;
+    margin-top: 2px;
+  }
+}
+
+a.nav-admin:hover{
+  font-size: 13px;
+  color:rgb(239, 239, 239);
+}
+
+
+
+
+button.filter-btn{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 14px;
+  p{
+    margin: 0;
+  }
+}
+
+button.logout-btn{
+  display: flex;
+  font-size: 14px;
+  p{
+    margin: 0;
+  }
+}
+
+
+input.search-bar-custom{
+  width: 45vw;
+  font-size: 13px;
+}
+
+.filter-icon{
+  padding-top: 6px;
 }
 
 // https://assets-global.website-files.com/605826c62e8de87de744596e/62b5a9572dab880f81c5d178_ajVzMkY7zNN-cU8hLJlTXR93WXkC09AI_0Dm-VBCfWe-kbHdRAAATBpSlNajuRsW7e0jHYCOVjdcHY1Sf-3X4tAI22KAFbbu31rgYGEmgCSV_WUrLFWhWl09ddXm7EhIITjKG0OggdxALfJeGQ.jpeg

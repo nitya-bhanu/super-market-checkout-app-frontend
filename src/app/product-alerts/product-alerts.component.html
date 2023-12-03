@@ -1,0 +1,20 @@
+<section>
+    <table class="table table-hover">
+
+        <thead>
+            <caption>Product Alerts</caption>
+            <tr>
+                <th scope="col">Product Name</th>
+                <th scope="col">Quantity</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let item of productsData">
+                <th scope="row">{{item.title}}</th>
+                <td>{{item.quantity}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-light" (click)="onNoClick()">Close</button>
+</section>

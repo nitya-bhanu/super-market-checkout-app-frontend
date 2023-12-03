@@ -31,7 +31,7 @@ export class UpdateProductsComponent implements OnInit {
     })
   }
 
-  submitForm() {
+  submitForm():void {
     console.log(this.productUpdateForm);
     const prod = {
       category: this.productUpdateForm.value['category'],
@@ -56,7 +56,7 @@ export class UpdateProductsComponent implements OnInit {
   }
 
   //deleting products from supermarket inventory
-  deleteProduct() {
+  deleteProduct():void {
     this.productService.deleteProductById(this.productId).subscribe({
       next: (res) => {
         if (res.success === true) {

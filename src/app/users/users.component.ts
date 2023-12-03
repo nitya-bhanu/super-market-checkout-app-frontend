@@ -18,7 +18,7 @@ export class UsersComponent implements OnInit{
     this.getAllUsers();
   }
 
-  getAllUsers() {
+  getAllUsers():void {
     this.userServices.getAllUsers().subscribe({
       next: (resp) => {
         console.log('Here Users',resp);
@@ -32,7 +32,7 @@ export class UsersComponent implements OnInit{
   }
 
   //allowing admin to set users as admin <employee to be more precise>
-  setUserAsAdmin(userId:string){
+  setUserAsAdmin(userId:string):void{
     this.userServices.setUserAsAdmin(userId).subscribe({
       next:(resp)=>{
         console.log(resp);

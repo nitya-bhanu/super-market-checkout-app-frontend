@@ -1,50 +1,65 @@
 <nav>
     <div class="collapsible d-flex justify-content-between">
-        <button class="btn btn-outline-light" (click)="handleToggle()">Filters &nbsp;<i *ngIf="!isActive"
-                class="bi bi-chevron-down"></i> <i *ngIf="isActive" class="bi bi-chevron-up"></i></button>
-        <button class="btn btn-outline-light" [routerLink]="['/cart']">
+        <button class="btn btn-outline-light btn-filter" (click)="handleToggle()"><i class="bi bi-filter"></i>Filters
+            &nbsp;<i *ngIf="!isActive" class="bi bi-chevron-down"></i> <i *ngIf="isActive"
+                class="bi bi-chevron-up"></i></button>
+        <a class="nav-user" href='https://webqr.com/' target="#">
+            <p><i class="bi bi-back"></i> Scan Product</p>
+        </a>
+        <a class="nav-user" [routerLink]="['/locate-product']">
+            <p><i class="bi bi-geo-alt-fill"></i> Locate Products</p>
+        </a>
+        <a class="nav-user" [routerLink]="['/post-review']">
+            <i class="bi bi-sticky"></i> &nbsp;Post Review
+        </a>
+        <a class="nav-user" [routerLink]="['/product-request']"><i class="bi bi-bag-dash"></i>&nbsp;Product
+            Request</a>
+        <a class="nav-user" [routerLink]="['/order-history']">
+            <i class="bi bi-clock-history"></i> &nbsp;Order History
+        </a>
+        <button class="cart-btn" [routerLink]="['/cart']">
             <i class="bi-cart-fill me-1"></i>
             Cart
             <span id="cart-pill-number" class="badge bg-dark text-white ms-1 rounded-pill"></span>
         </button>
         <div class="last-btns">
-            <button class="btn btn-outline-light"><a class="nav-link" [routerLink]="['/product-request']">Product
-                    Request</a></button>
-            <button class="btn btn-outline-light" (click)="logOutFromWindow()"><a class="nav-link">Log Out</a></button>
+            <button class="logout-btn btn btn-danger" (click)="logOutFromWindow()">
+                <mat-icon>logout</mat-icon>Log
+                Out</button>
         </div>
-
     </div>
-    <div class="content d-flex-column" [ngStyle]="{'height':isActive?'40vh':'0vh','opacity':isActive?'1':'0'}">
-
-        <div class="upper-tag d-flex justify-content-around">
-            <form class="form-inline my-2 my-lg-0 search-bar-custom" [formGroup]="setFieldsAndQueryForm">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search Products" aria-label="Search"
+    <div class="option-pane-search content d-flex-column"
+        [ngStyle]="{'height':isActive?'40vh':'0vh','opacity':isActive?'1':'0'}">
+        <div class="upper-tag d-flex justify-content-center">
+            <img src="../../assets/electronic-img.png" alt="app-logo">
+            <form [formGroup]="setFieldsAndQueryForm" class="search-forms">
+                <input class="search-bar-custom form-control" placeholder="Search Products" aria-label="Search"
                     formControlName="searchQueryValueFormName">
             </form>
         </div>
-        <div class="d-flex justify-content-between">
+        <div class="option-pane d-flex justify-content-between">
             <div class="category">
-                <p>| Sort By |</p>
-                <a>| Normal |</a>
-                <a (click)="selectCategory('men\'s clothing')"> Men </a>
-                <a (click)="selectCategory('women\'s clothing')"> Women </a>
-                <a (click)="selectCategory('kids')"> Kids </a>
-                <a (click)="selectCategory('daily essentials')"> Daily Essentials </a>
+                <p>| Filter By <i class="bi bi-filter"></i> |</p>
+                <button>| Normal |</button>
+                <button (click)="selectCategory('men\'s clothing')"> Men </button>
+                <button (click)="selectCategory('women\'s clothing')"> Women </button>
+                <button (click)="selectCategory('kids')"> Kids </button>
+                <button (click)="selectCategory('daily essentials')"> Daily Essentials </button>
             </div>
 
             <div class="filter">
-                <p>| Sort By |</p>
-                <a>| Normal |</a>
-                <a (click)="selectOrderByField('price')"> Price </a>
-                <a (click)="selectOrderByField('quantity')"> Quantity </a>
-                <a (click)="selectOrderByField('discount')"> Discounts </a>
-                <a (click)="selectOrderByField('title')"> Name </a>
+                <p>| Sort By <i class="bi bi-sort-up"></i> |</p>
+                <button>| Normal |</button>
+                <button (click)="selectOrderByField('price')"> Price </button>
+                <button (click)="selectOrderByField('quantity')"> Quantity </button>
+                <button (click)="selectOrderByField('discount')"> Discounts </button>
+                <button (click)="selectOrderByField('title')"> Name </button>
             </div>
 
             <div class="sortManner">
-                <p>| Sort Direction |</p>
-                <a (click)="selectOrderManner('asc')">Ascending</a>
-                <a (click)="selectOrderManner('desc')">Descending</a>
+                <p>| Sort Direction <i class="bi bi-arrow-down-up"></i> |</p>
+                <button (click)="selectOrderManner('asc')">Lowest to Highest</button>
+                <button (click)="selectOrderManner('desc')">Highest to Lowest</button>
             </div>
         </div>
     </div>

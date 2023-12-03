@@ -33,6 +33,17 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
 import { UsersComponent } from './users/users.component';
 import { LoyaltyPaneComponent } from './loyalty-pane/loyalty-pane.component';
 import { HomeNavbarComponent } from './home-navbar/home-navbar.component';
+import { CategoryQuantityComponent } from './category-quantity/category-quantity.component';
+import { PostReviewComponent } from './post-review/post-review.component';
+import { GetReviewComponent } from './get-review/get-review.component';
+import {MatIconModule} from '@angular/material/icon'
+import {MatDialogModule} from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.component';
+import { LocateProductsComponent } from './locate-products/locate-products.component';
+import { UserOrdersComponent } from './user-orders/user-orders.component';
+import { ProductAlertsComponent } from './product-alerts/product-alerts.component';
+
 
 @NgModule({
   declarations: [
@@ -57,6 +68,13 @@ import { HomeNavbarComponent } from './home-navbar/home-navbar.component';
     UsersComponent,
     LoyaltyPaneComponent,
     HomeNavbarComponent,
+    CategoryQuantityComponent,
+    PostReviewComponent,
+    GetReviewComponent,
+    QrCodeScannerComponent,
+    LocateProductsComponent,
+    UserOrdersComponent,
+    ProductAlertsComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +87,10 @@ import { HomeNavbarComponent } from './home-navbar/home-navbar.component';
     MatTableModule, 
     MatSortModule, 
     MatPaginatorModule, 
-    DatePipe
+    DatePipe,
+    MatIconModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [
     ProductsService

@@ -3,6 +3,9 @@ import { RequestedProductSchema } from '../shared/models/requestedProduct';
 import { RequestProductService } from '../shared/services/request-product.service';
 import { OrderService } from '../shared/services/order.service';
 import { orderSchema } from '../shared/models/orders';
+import { MatDialog } from '@angular/material/dialog';
+import { RequestedProductsComponent } from '../requested-products/requested-products.component';
+import { ProductAlertsComponent } from '../product-alerts/product-alerts.component';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -22,7 +25,7 @@ export class AdminDashboardComponent implements OnInit {
 
   requestedProducts!: Array<RequestedProductSchema>;
 
-  constructor(private requestedProductServices: RequestProductService, private orderService: OrderService) { }
+  constructor(private requestedProductServices: RequestProductService, private orderService: OrderService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getRequestedProducts();
@@ -31,7 +34,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   //listing all the prodcuts requested by users
-  getRequestedProducts() {
+  getRequestedProducts(): void {
     this.requestedProductServices.getRequestedProducts().subscribe({
       next: (resp) => {
         this.requestedProducts = resp;
@@ -43,7 +46,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   //getting all the orders till date
-  getAllOrders() {
+  getAllOrders(): void {
     this.orderService.getAllOrders().subscribe({
       next: (resp) => {
         this.allOrders = resp;
@@ -56,7 +59,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   //filtering orders month wise, pushing them into each month's array
-  setMonthlyOrders() {
+  setMonthlyOrders(): void {
 
     this.currentMonthtotal = 0;
     this.pastMonthTotal = 0;
@@ -70,22 +73,29 @@ export class AdminDashboardComponent implements OnInit {
     this.allOrders.forEach(e => {
       const x = e.orderDate.slice(5, 7);
       month=month++;
-      console.log('CUT ',x);
-      console.log('curr MonthFetch: ',month);
-      let stringcurrMonth='';
-      let stringPrevMonth='';
-      if(month<11){
-        if(month===10){
-          stringcurrMonth=month.toString();
-          stringPrevMonth='0'+(month-1).toString();
+      // console.log('CUT ',x);
+
+      let stringcurrMonth = '';
+      let stringPrevMonth = '';
+      if (month < 11) {
+        if (month === 10) {
+          stringcurrMonth = month.toString();
+          stringPrevMonth = '0' + (month - 1).toString();
         }
         else {
-          stringcurrMonth='0'+(month).toString();
-          stringPrevMonth='0'+(month-1).toString();
+          stringcurrMonth = '0' + (month).toString();
+          stringPrevMonth = '0' + (month - 1).toString();
         }
       }
+      else {
+        stringcurrMonth = month.toString();
+        stringPrevMonth = (month - 1).toString();
+      }
+
+      // console.log(stringPrevMonth+' '+stringcurrMonth);
       
-      if (x ===stringPrevMonth) {
+
+      if (x === stringPrevMonth) {
         this.pastMonthSchema.push(e);
         this.pastMonthTotal = e.totalMoney;
       }
@@ -98,7 +108,7 @@ export class AdminDashboardComponent implements OnInit {
 
 
   //setting the time on dashboard of admin as digital clock
-  setDigitalTime() {
+  setDigitalTime(): void {
     const date = new Date();
     let h = date.getHours(); // 0 - 23
     const m = date.getMinutes(); // 0 - 59
@@ -123,6 +133,18 @@ export class AdminDashboardComponent implements OnInit {
     document.getElementById("MyClockDisplay")!.textContent = time;
 
     setInterval(this.setDigitalTime, 1000);
+  }
+
+  openDialog(titleName: string) {
+    this.dialog.open(RequestedProductsComponent, {
+      data: {
+        title: titleName
+      }
+    });
+  }
+
+  openProductAlertDialog() {
+    this.dialog.open(ProductAlertsComponent);
   }
 
 }

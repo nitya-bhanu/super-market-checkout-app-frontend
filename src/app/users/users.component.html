@@ -17,7 +17,7 @@
           <td>{{item.phoneNumber}}</td>
           <td>{{item.loyaltyBalance}}</td>
           <td>{{item.role}}</td>
-          <td *ngIf="item.role==='user'" class="make-admin"><button (click)="setUserAsAdmin(item.userId)">Y</button></td>
+          <td *ngIf="item.role==='user'" class="make-admin"><button class="yes-btn" (click)="setUserAsAdmin(item.userId)"><mat-icon>admin_panel_settings</mat-icon></button></td>
         </tr>
       </tbody>
     </table>

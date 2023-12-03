@@ -10,6 +10,9 @@ export interface prodcutsSchema{
     description:string;
     imageUrl:string;
 }
+export interface productsList{
+    products:prodcutsSchema[]
+}
 export interface GetProductsSchemaData extends GenericResponse{
     data:prodcutsSchema[]
 }

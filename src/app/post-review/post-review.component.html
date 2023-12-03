@@ -1,0 +1,24 @@
+<app-home-navbar></app-home-navbar>
+<section>
+  <div class="side-container"><img src="../../assets/review-recommended-from-customer-template_302792-123.avif" alt="review-images"/></div>
+    <div class="container">
+        <div class="title">Post Your Reviews Here</div>
+        <div class="content">
+          <form [formGroup]="reviewForm">
+            <div class="user-details">
+              <div class="input-box">
+                <span class="details">Review Category</span>
+                <input type="text" name="" required="" formControlName="reviewCategory">
+              </div>
+              <div class="input-box">
+                <span class="details">Description</span>
+                <input type="text" name="" required="" formControlName="reviewDescription">
+              </div>
+            </div>
+            <div class="button">
+              <input type="submit" value="Post Review" (click)="submitForm()">
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>

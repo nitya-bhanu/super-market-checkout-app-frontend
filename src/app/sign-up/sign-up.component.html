@@ -1,41 +1,31 @@
 <section>
+  <div class="side-container"><img src="../../assets/istockphoto-513984990-612x612.jpg" alt="checkout-image"/></div>
   <div class="container">
-    <div class="title">Registration</div>
+    <div class="title">Sign Up</div>
     <div class="content">
-      <form action="#">
+      <form [formGroup]="signUpForm">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Full Name</span>
-            <input type="text" placeholder="Enter your name" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Username</span>
-            <input type="text" placeholder="Enter your username" required>
+            <input type="text" placeholder="Enter your name" required formControlName="fullName">
           </div>
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text" placeholder="Enter your email" required>
+            <input type="text" placeholder="Enter your email" required formControlName="email">
           </div>
           <div class="input-box">
             <span class="details">Phone Number</span>
-            <input type="text" placeholder="Enter your number" required>
+            <input type="text" placeholder="Enter your number" required formControlName="phone">
           </div>
           <div class="input-box">
             <span class="details">Password</span>
-            <input type="text" placeholder="Enter your password" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Confirm Password</span>
-            <input type="text" placeholder="Confirm your password" required>
+            <input type="text" placeholder="Enter your password" required formControlName="password">
           </div>
         </div>
         <div class="button">
-          <input type="submit" value="Register" [routerLink]="['home-page']">
+          <input type="submit" value="Proceed" (click)="setUserDetails()">
         </div>
       </form>
     </div>
-  </div>
-  <div class="sign-in-direct">
-    <p>Already a User? <a [routerLink]="['']">Sign In</a></p>
   </div>
 </section>

@@ -28,6 +28,10 @@ export class CartCardComponent implements OnInit {
   //cart products quantity emitter
   @Output() handleQuant:EventEmitter<exportCartData>=new EventEmitter();
   @Output() handleexportPreviewData:EventEmitter<exportCartPreviewData>=new EventEmitter();
+
+  //cart remove reload emitter 
+  @Output() handleCartRemoval:EventEmitter<boolean>=new EventEmitter();
+
   displayProducts!: prodcutsSchema;
 
   constructor(private cartService: CartService, private productService: ProductsService,private router:Router) { }
@@ -41,7 +45,7 @@ export class CartCardComponent implements OnInit {
       }
     })
   }
-  increaseCart(prodId: string) {
+  increaseCart(prodId: string):void {
     const x={
       userId:this.userId,
       prodId:prodId,
@@ -55,11 +59,11 @@ export class CartCardComponent implements OnInit {
     this.handleQuant.emit(x);
     this.handleexportPreviewData.emit(y);
   }
-  decreaseCart(prodId: string) {
+  decreaseCart(prodId: string):void {
     const x={
       userId:this.userId,
       prodId:prodId,
-      argument:'add'
+      argument:'sub'
     }
     const y={
       title:this.displayProducts.title,
@@ -69,11 +73,12 @@ export class CartCardComponent implements OnInit {
     this.handleQuant.emit(x);
     this.handleexportPreviewData.emit(y);
   }
-  removeFromCart(prodId: string) {
+
+  removeFromCart(prodId: string):void {
     this.cartService.deleteCartDetails(this.userId,prodId).subscribe({
       next: (resp) => {
         console.log(resp);
-        this.router.navigate(['/cart']);
+        this.handleCartRemoval.emit(true);
       },
       error: (err) => {
         console.log(err);

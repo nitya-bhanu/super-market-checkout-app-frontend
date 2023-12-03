@@ -12,11 +12,11 @@ export class OrderService {
 
   //getting all the orders in database
   getAllOrders():Observable<Array<orderSchema>>{
-    return this.http.get<Array<orderSchema>>(`http://localhost:8080/orders`);
+    return this.http.get<Array<orderSchema>>(`https://checkout-server.up.railway.app/orders`);
   }
 
   //psoting all the orders placed by user
   postOrder(e:cartSchema,price:number):Observable<orderSchema>{
-    return this.http.post<orderSchema>(`http://localhost:8080/orders/${price}`,e);
+    return this.http.post<orderSchema>(`https://checkout-server.up.railway.app/orders/${price}`,e);
   }
 }

@@ -8,6 +8,16 @@ export interface userSchema{
     phoneNumber:string;
     loyaltyBalance:number;
 }
+
+export interface setUserSchema{
+    name:string;
+    emailId:string;
+    phoneNumber:string;
+    loyaltyBalance:number;
+    password:string;
+    role:string;
+}
+
 export interface GenericUserResponse extends GenericResponse{
     data:userSchema
 }

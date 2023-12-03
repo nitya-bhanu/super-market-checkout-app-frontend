@@ -13,6 +13,6 @@ export class SignInUpService {
       userId:userId,
       password:password
     }
-    return this.http.post<UserSignInSchema>(`http://localhost:8080/sign-in`,x);
+    return this.http.post<UserSignInSchema>(`https://checkout-server.up.railway.app/sign-in`,x);
   }
 }

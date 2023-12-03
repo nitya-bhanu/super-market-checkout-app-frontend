@@ -34,7 +34,7 @@ export class OrderDetailsComponent implements OnInit{
   }
 
 //getting all the orders of the supermaket till date
-  getAllOrders() {
+  getAllOrders():void {
     this.orderService.getAllOrders().subscribe({
       next: (resp) => {
         this.allOrders = resp;
@@ -50,7 +50,7 @@ export class OrderDetailsComponent implements OnInit{
 
 
   //setting up the monthly orders monthwise
-  setMonthlyOrders() {
+  setMonthlyOrders():void {
     console.log('New here: ',this.allOrders);
     
     this.janOrders = [];
@@ -95,7 +95,7 @@ export class OrderDetailsComponent implements OnInit{
     })
   }
   
-  setMonthlyArray(){
+  setMonthlyArray():void{
     this.monthlyOrderArray = [];
     this.monthlyOrderArray.push(this.janOrders,this.febOrders,this.marchOrders,this.aprilOrders,this.mayOrders,this.juneOrders,this.julyOrders,this.augustOrders,this.septOrders,this.octOrders,this.novOrders,this.decOrders);
     console.log('Nov', this.novOrders);

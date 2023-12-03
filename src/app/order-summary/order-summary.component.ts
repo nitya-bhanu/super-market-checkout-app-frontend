@@ -40,22 +40,22 @@ export class OrderSummaryComponent implements OnInit {
     this.setUser();
   }
 
-  setSumTotal() {
+  setSumTotal():void {
     this.totalSum = this.sharedDataService.orderData.totalCartMoney;
   }
 
-  setProductAndQuantity() {
+  setProductAndQuantity():void {
     this.productsAndQuantity = this.sharedDataService.orderData.productAndQuantityList;
   }
 
-  setUser() {
+  setUser():void {
     this.userDetails.emailId = this.sharedDataService.orderData.userEmailId;
     this.userDetails.loyaltyBalance = this.sharedDataService.orderData.userLoyaltyBalance;
     this.userDetails.name = this.sharedDataService.orderData.userName;
     this.userDetails.name = this.sharedDataService.orderData.userName;
   }
 
-  printPage(){
+  printPage():boolean{
     window.print();
     return false;
   }

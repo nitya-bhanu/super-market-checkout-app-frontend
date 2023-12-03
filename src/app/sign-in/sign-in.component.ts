@@ -15,21 +15,17 @@ export class SignInComponent implements OnInit{
   signInForm!:FormGroup;
 
   constructor(private getSignInUpService:SignInUpService, private sharedDataService:SharedDataService, private router:Router, private formBuilder:FormBuilder){}
-  fetchedUserDataResponse:UserSignInSchema={
-    userId: '',
-    bool: false,
-    role: ''
-  };
+  fetchedUserDataResponse!:UserSignInSchema
 
   ngOnInit(): void {
     this.signInForm=this.formBuilder.group({
       emailID:this.formBuilder.control(''),
-      password:this.formBuilder.control('')
+      password:this.formBuilder.control(''),
     })
   }
 
   //getting the signed in user details 
-  getUserDetails(){
+  getUserDetails():void{
     this.getSignInUpService.getUserResponse(this.signInForm.controls['emailID'].value,this.signInForm.controls['password'].value).subscribe({
       next: (resp) => {
         this.fetchedUserDataResponse=resp;

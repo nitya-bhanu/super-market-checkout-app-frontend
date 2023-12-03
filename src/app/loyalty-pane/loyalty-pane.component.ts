@@ -11,16 +11,16 @@ import { Router } from '@angular/router';
 export class LoyaltyPaneComponent implements OnInit {
 
   loyaltyList!: Array<LoyaltyScehma>;
-  loyaltyNewValue='';
+  loyaltyNewValue = '';
 
-  constructor(private loyaltyService: LoyaltyService, private router:Router) { }
+  constructor(private loyaltyService: LoyaltyService, private router: Router) { }
 
   ngOnInit(): void {
     this.getLoyalties();
   }
 
   //getting all the loyalty criterias
-  getLoyalties() {
+  getLoyalties(): void {
     this.loyaltyService.getAllLoyaltyPoints().subscribe({
       next: (resp) => {
         this.loyaltyList = resp;
@@ -32,27 +32,24 @@ export class LoyaltyPaneComponent implements OnInit {
   }
 
   //setting up the value of discounts to be updated 
-  onKeySetValue(e:any){
-    this.loyaltyNewValue=e.target.value;
+  onKeySetValue(e: any): void {
+    this.loyaltyNewValue = e.target.value;
   }
 
   //setting up the updated loyalty discounts
-  setLoyalty(loyaltyId:string,levelValue:number){
-    const x={
-      levelValue:levelValue,
-      loyaltyId:loyaltyId,
-      cashInValue:Number(this.loyaltyNewValue)
+  setLoyalty(loyaltyId: string, levelValue: number): void {
+    const x = {
+      levelValue: levelValue,
+      loyaltyId: loyaltyId,
+      cashInValue: Number(this.loyaltyNewValue)
     }
     this.loyaltyService.updateLoyaltyPoints(x).subscribe({
-      next:(resp)=>{
+      next: (resp) => {
         console.log(resp);
-        this.router.navigate(['/dashboard/loyalty-points']);
+        this.getLoyalties();
       },
-      error:(err)=>{
-        console.log('error posting: ',err);
-      },
-      complete:()=>{
-        this.router.navigate(['/dashboard/loyalty-points']);
+      error: (err) => {
+        console.log('error posting: ', err);
       }
     })
   }

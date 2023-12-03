@@ -18,6 +18,12 @@ import { UsersComponent } from './users/users.component';
 import { adminGuard } from './shared/services/auth/admin.guard';
 import { userGuard } from './shared/services/auth/user.guard';
 import { LoyaltyPaneComponent } from './loyalty-pane/loyalty-pane.component';
+import { CategoryQuantityComponent } from './category-quantity/category-quantity.component';
+import { GetReviewComponent } from './get-review/get-review.component';
+import { PostReviewComponent } from './post-review/post-review.component';
+import { LocateProductsComponent } from './locate-products/locate-products.component';
+import { ProductAlertsComponent } from './product-alerts/product-alerts.component';
+import { UserOrdersComponent } from './user-orders/user-orders.component';
 
 
 const routes: Routes = [
@@ -59,9 +65,22 @@ const routes: Routes = [
     canActivate:[userGuard]
   },
   {
+    path:"post-review",
+    component:PostReviewComponent,
+    canActivate:[userGuard]
+  },
+  {
     path: "addProduct",
     component: AddProductsComponent,
     canActivate:[adminGuard]
+  },
+  {
+    path:"locate-product",
+    component:LocateProductsComponent
+  },
+  {
+    path:"order-history",
+    component:UserOrdersComponent
   },
   {
     path: "dashboard",
@@ -83,6 +102,14 @@ const routes: Routes = [
       {
         path:'loyalty-points',
         component:LoyaltyPaneComponent
+      },
+      {
+        path:'category-summary',
+        component:CategoryQuantityComponent
+      },
+      {
+        path:'review',
+        component:GetReviewComponent
       },
       {
         path:':productName',
