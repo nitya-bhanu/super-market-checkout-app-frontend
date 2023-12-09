@@ -125,6 +125,12 @@ form .input-box span.details{
    transition: all 0.3s ease;
    background: linear-gradient(135deg, #242627, #69676a);
  }
+
+select{
+  width: 15vw;
+  height: 7vh;
+}
+
  form .button input:hover{
   /* transform: scale(0.99); */
   background: linear-gradient(-135deg, #adaaae,#242627);

@@ -1,5 +1,6 @@
 <section class="order-details">
-    <h5>Monthly Orders</h5>
+    <div class="heading"><h5>Monthly Orders</h5> <button class="btn btn-outline-dark" (click)="exportToExcel()">Export Data to Excel <i class="bi bi-file-post"></i></button></div>
+    
     <div class="table-pane">
         <table class="table table-hover">
 
@@ -14,7 +15,7 @@
             <tbody>
                 <tr *ngFor="let itemz of janOrders">
                     <th scope="row">{{itemz.orderID}}</th>
-                    <td>Rs. {{itemz.totalMoney}} /-</td>
+                    <td>$ {{itemz.totalMoney}} /-</td>
                 </tr>
             </tbody>
             <hr>
@@ -33,7 +34,7 @@
             <tbody>
                 <tr *ngFor="let itemz of febOrders">
                     <th scope="row">{{itemz.orderID}}</th>
-                    <td>Rs. {{itemz.totalMoney}} /-</td>
+                    <td>$ {{itemz.totalMoney}} /-</td>
                 </tr>
             </tbody>
              <hr>
@@ -52,7 +53,7 @@
             <tbody>
                 <tr *ngFor="let itemz of marchOrders">
                     <th scope="row">{{itemz.orderID}}</th>
-                    <td>Rs. {{itemz.totalMoney}} /-</td>
+                    <td>$ {{itemz.totalMoney}} /-</td>
                 </tr>
             </tbody>
             <hr>
@@ -71,7 +72,7 @@
             <tbody>
                 <tr *ngFor="let itemz of aprilOrders">
                     <th scope="row">{{itemz.orderID}}</th>
-                    <td>Rs. {{itemz.totalMoney}} /-</td>
+                    <td>$ {{itemz.totalMoney}} /-</td>
                 </tr>
             </tbody>
             <hr>
@@ -90,7 +91,7 @@
             <tbody>
                 <tr *ngFor="let itemz of mayOrders">
                     <th scope="row">{{itemz.orderID}}</th>
-                    <td>Rs. {{itemz.totalMoney}} /-</td>
+                    <td>$ {{itemz.totalMoney}} /-</td>
                 </tr>
             </tbody>
             <hr>
@@ -109,7 +110,7 @@
             <tbody>
                 <tr *ngFor="let itemz of juneOrders">
                     <th scope="row">{{itemz.orderID}}</th>
-                    <td>Rs. {{itemz.totalMoney}} /-</td>
+                    <td>$ {{itemz.totalMoney}} /-</td>
                 </tr>
             </tbody>
             <hr>
@@ -128,7 +129,7 @@
             <tbody>
                 <tr *ngFor="let itemz of julyOrders">
                     <th scope="row">{{itemz.orderID}}</th>
-                    <td>Rs. {{itemz.totalMoney}} /-</td>
+                    <td>$ {{itemz.totalMoney}} /-</td>
                 </tr>
             </tbody>
             <hr>
@@ -147,7 +148,7 @@
             <tbody>
                 <tr *ngFor="let itemz of augustOrders">
                     <th scope="row">{{itemz.orderID}}</th>
-                    <td>Rs. {{itemz.totalMoney}} /-</td>
+                    <td>$ {{itemz.totalMoney}} /-</td>
                 </tr>
             </tbody>
             <hr>
@@ -166,7 +167,7 @@
             <tbody>
                 <tr *ngFor="let itemz of septOrders">
                     <th scope="row">{{itemz.orderID}}</th>
-                    <td>Rs. {{itemz.totalMoney}} /-</td>
+                    <td>$ {{itemz.totalMoney}} /-</td>
                 </tr>
             </tbody>
             <hr>
@@ -185,7 +186,7 @@
             <tbody>
                 <tr *ngFor="let itemz of octOrders">
                     <th scope="row">{{itemz.orderID}}</th>
-                    <td>Rs. {{itemz.totalMoney}} /-</td>
+                    <td>$ {{itemz.totalMoney}} /-</td>
                 </tr>
             </tbody>
             <hr>
@@ -204,7 +205,7 @@
             <tbody>
                 <tr *ngFor="let itemz of novOrders">
                     <th scope="row">{{itemz.orderID}}</th>
-                    <td>Rs. {{itemz.totalMoney}} /-</td>
+                    <td>$ {{itemz.totalMoney}} /-</td>
                 </tr>
             </tbody>
             <hr>
@@ -223,7 +224,7 @@
             <tbody>
                 <tr *ngFor="let itemz of decOrders">
                     <th scope="row">{{itemz.orderID}}</th>
-                    <td>Rs. {{itemz.totalMoney}} /-</td>
+                    <td>$ {{itemz.totalMoney}} /-</td>
                 </tr>
             </tbody>
             <hr>

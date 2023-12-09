@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { prodcutsSchema } from '../shared/models/prodcuts';
 import { ProductsService } from '../shared/services/products.service';
 import { SharedDataService } from '../shared/services/shared-data.service';
@@ -10,13 +10,15 @@ import Chart from 'chart.js/auto';
   templateUrl: './category-quantity.component.html',
   styleUrls: ['./category-quantity.component.scss']
 })
-export class CategoryQuantityComponent implements OnInit{
+export class CategoryQuantityComponent implements OnInit,OnDestroy{
   productsData!: prodcutsSchema[];
-  public chart: any;
+  public chart:any;
   cat1=0;
   cat2=0;
   cat3=0;
   cat4=0;
+
+  loader=false;
 
   constructor(private getProductServices: ProductsService,private sharedServices:SharedDataService,private router:Router) { }
 
@@ -24,12 +26,16 @@ export class CategoryQuantityComponent implements OnInit{
     this.getProducts(0, 100, '', '', '', '');
   }
 
+  ngOnDestroy() {
+    console.log('');
+  }
+
   getProducts(pageIndex: number, pageSize: number, orderManner: string, orderCriteria: string, categoryName: string, searchValue: string): void {
     this.getProductServices.getProducts(pageIndex, pageSize, orderManner, orderCriteria, categoryName, searchValue).subscribe({
       next: (resp) => {
         console.log(resp.data);
         this.productsData = resp.data;
-
+        this.loader=true;
         this.productsData.forEach(e=>{
           if(e.category==='men\'s clothing')
           this.cat1++;
@@ -41,7 +47,7 @@ export class CategoryQuantityComponent implements OnInit{
           this.cat4++;
         })
 
-        this.chart=new Chart('acquisitions',
+        this.chart=new Chart('acquisitions-1',
           {
             type: 'doughnut',
             data: {
@@ -54,7 +60,7 @@ export class CategoryQuantityComponent implements OnInit{
               ],
             },
             options: {
-              aspectRatio:1
+              aspectRatio:1,
             }
           }
         );

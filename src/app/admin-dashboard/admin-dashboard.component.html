@@ -1,26 +1,33 @@
 <app-home-navbar></app-home-navbar>
+
 <div class="display-pane">
+
     <div class="left-side">
         <div class="greetings">
-            <h1 class="clock" id="MyClockDisplay"></h1>
+            <h1 class="clock" id="MyClockDisplay"> </h1>
         </div>
-        <div class="left-side-pane bg-dark">
-            <a [routerLink]="['/dashboard/order-table']"><i class="bi bi-bar-chart-fill"></i>
+        <div class="left-side-pane">
+            <a [routerLink]="['/dashboard/order-table']"><span style="margin-left: 10px;"></span><i
+                    class="bi bi-bar-chart-fill"></i>
                 &nbsp;<p>Visualisation Summary</p>
             </a>
-            <a [routerLink]="['/dashboard/category-summary']"><mat-icon>view_headline</mat-icon>
+            <a [routerLink]="['/dashboard/category-summary']"><span
+                    style="margin-left: 10px;"></span><mat-icon>view_headline</mat-icon>
                 <p>Category Wise Items</p>
             </a>
-            <a [routerLink]="['/dashboard/order-details']"><i class="bi bi-calendar"></i>
+            <a [routerLink]="['/dashboard/order-details']"><span style="margin-left: 10px;"></span><i
+                    class="bi bi-calendar"></i>
                 &nbsp;<p>Monthly Order Summary</p>
             </a>
-            <a [routerLink]="['/dashboard/review']"><mat-icon>reviews</mat-icon>
+            <a [routerLink]="['/dashboard/review']"><span style="margin-left: 10px;"></span><mat-icon>reviews</mat-icon>
                 &nbsp; <p>Customer Reviews</p>
             </a>
-            <a [routerLink]="['/dashboard/users']"><mat-icon>account_box</mat-icon>
+            <a [routerLink]="['/dashboard/users']"><span
+                    style="margin-left: 10px;"></span><mat-icon>account_box</mat-icon>
                 &nbsp; <p>Customer Details</p>
             </a>
-            <a [routerLink]="['/dashboard/loyalty-points']"><mat-icon>discount</mat-icon>
+            <a [routerLink]="['/dashboard/loyalty-points']"><span
+                    style="margin-left: 10px;"></span><mat-icon>discount</mat-icon>
                 &nbsp; <p>Loyalty Setup</p>
             </a>
         </div>
@@ -32,38 +39,28 @@
     <div class="right-side-pane">
 
         <div class="product-alerts">
-            <button class="alert-btn btn btn-outline-dark" (click)="openProductAlertDialog()">View Product Alerts</button>
+            <button class="alert-btn btn btn-danger" (click)="openProductAlertDialog()">View Product
+                Alerts</button>
+            <button class="alert-btn btn btn-dark" (click)="openDialog('all')">View Product
+                Requests</button>
         </div>
+
+        <a class="alert-btn btn btn-dark" [routerLink]="['/dashboard/month-compare']">Compare Other Month</a>
+
+        <button class="alert-btn btn btn-dark" (click)="openRequestOnboardAlertDialog()">View Onboarding
+            Requests</button>
+        <button class="alert-btn btn btn-dark" (click)="openSendAnnouncementDialog()">Send Announcements</button>
 
         <div class="month-sale-comparison">
             <div class="current-month-sales">
                 Sales this month
-                <br>Rs. {{currentMonthtotal}}
+                <br>$ {{currentMonthtotal}}
             </div>
 
             <div class="past-month-sales">
                 Sales past month
-                <br>Rs. {{pastMonthTotal}}
+                <br>$ {{pastMonthTotal}}
             </div>
-        </div>
-
-        <div class="table-req">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Product Requests</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of requestedProducts">
-                        <td>{{item.title}}</td>
-                        <td><button class="btn btn-outline-dark" (click)="openDialog(item.title)">View</button></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><button class="btn btn-outline-dark" (click)="openDialog('all')">View All</button></td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </div>
 </div>

@@ -1,0 +1,26 @@
+.announcement-form{
+    height: 50vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 30vh;
+        align-items: center;
+
+        input.announce-subject{
+            width: 30vw;
+        }
+        input.announce-text{
+            width: 30vw;
+            height: 20vh;
+        }
+    }
+    button{
+        width: 15vw;
+    }
+}

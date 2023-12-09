@@ -8,26 +8,25 @@
     justify-content: space-between;
 
     .left-side {
-
+        background-color: black;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 80vh;
+        height: 100%;
 
         .greetings {
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-            width: 250px;
+            width: 23vw;
             height: 100px;
             align-items: center;
             display: flex;
-            margin-left: 20px;
 
             .clock {
                 text-align: center;
                 align-items: center;
                 justify-content: center;
                 padding: 20px;
-                color: black;
+                color: white;
                 font-size: 25px;
                 font-family: Orbitron;
                 letter-spacing: 7px;
@@ -35,21 +34,20 @@
         }
 
         .left-side-pane {
-            height: 62vh;
+            background-color: #212529;
+            // height: 62vh;
             color: white;
-            margin-left: 20px;
-            background-color: black;
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
             text-align: center;
-            padding: 10px;
 
             a {
+                width: 23vw;
                 display: flex;
+                align-items: center;
                 color: white;
                 text-decoration: none;
-                list-style: none;
+                height: 10vh;
                 font-size: 15px;
                 transition-duration: 70ms;
                 p {
@@ -60,8 +58,10 @@
             a:hover {
                 color: rgb(234, 234, 234);
                 font-size: 14px;
+                background-color: #101213;
             }
         }
+
 
     }
 
@@ -69,25 +69,30 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 77vh;
+        height: 73vh;
+        margin-right: 10px;
+        width: 22vw;
 
         .product-alerts{
+            height: 16vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
             button.alert-btn{
-               width: 25vw;
+            //    width: 22vw;
             }
         }
 
         .month-sale-comparison {
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
-            margin-right: 20px;
-
+            height: 30vh;
 
             .current-month-sales {
                 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-                width: 12vw;
-                height: 120px;
-                margin-bottom: 10px;
+                height: 12vh;
+                
                 font-size: 18px;
                 text-align: center;
                 justify-content: center;
@@ -98,10 +103,9 @@
 
             .past-month-sales {
                 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-                width: 12vw;
-                margin-bottom: 10px;
+                height: 12vh;
+        
                 font-size: 18px;
-                height: 120px;
                 text-align: center;
                 justify-content: center;
                 align-items: center;
@@ -128,3 +132,12 @@
 ::-webkit-scrollbar {
     display: none;
 }
+
+// .tabs-display{
+//     width: 100%;
+//     display: flex;
+//     align-items: center;
+// }
+// .tab-content{
+//     margin-left: 30vw;
+// }

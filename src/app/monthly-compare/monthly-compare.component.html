@@ -1,0 +1,49 @@
+<div *ngIf="!allOrdersLoader"><mat-spinner></mat-spinner></div>
+<div class="monthly-compare" *ngIf="allOrdersLoader">
+    <div class="first-month">
+        <div class="first-month-options">
+            <mat-form-field>
+                <mat-label>Select Month</mat-label>
+                <mat-select [(value)]="monthSelect1" (valueChange)="getFirstMonthOrders()">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let item of MonthData" [value]="item.monthTag"> {{item.monthName}} </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="first-month-details" *ngFor="let itemz of firstMonth">
+            <div class="order-basic-details">
+                <p>Order Date: {{itemz.orderDate}}</p>
+                <p>Order Value: {{itemz.totalMoney}}</p>
+                <div class="inside-data">
+                    <div class="inside-prod-quant" *ngFor="let inside of itemz.productAndQuantityList">
+                        <p>Product Id {{inside.productId}}</p>
+                        <p>Quantity {{inside.orderedProductQuantity}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="second-month">
+        <div class="second-month-options">
+            <mat-form-field>
+                <mat-label>Select Month</mat-label>
+                <mat-select [(value)]="monthSelect2" (valueChange)="getSecondMonthOrders()">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let item of MonthData" [value]="item.monthTag"> {{item.monthName}} </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="second-month-details"  *ngFor="let itemz of secondMonth">
+            <div class="order-basic-details">
+                <p>Order Date: {{itemz.orderDate}}</p>
+                <p>Order Value: {{itemz.totalMoney}}</p>
+                <div class="inside-data">
+                    <div class="inside-prod-quant" *ngFor="let inside of itemz.productAndQuantityList">
+                        <p>Product Id {{inside.productId}}</p>
+                        <p>Quantity {{inside.orderedProductQuantity}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

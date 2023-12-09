@@ -9,6 +9,7 @@ import { RequestProductService } from '../shared/services/request-product.servic
   styleUrls: ['./product-request.component.scss']
 })
 export class ProductRequestComponent implements OnInit{
+  categories = ['Kids', 'Women', 'Men', 'Essentials', 'Electronics', 'Others'];
   productUpdateForm!: FormGroup;
   constructor(private formbuilder: FormBuilder, private router: Router, private requestProductService: RequestProductService) { }
 

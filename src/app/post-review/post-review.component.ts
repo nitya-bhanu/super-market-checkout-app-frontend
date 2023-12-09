@@ -10,7 +10,8 @@ import { ReviewService } from '../shared/services/review.service';
 })
 export class PostReviewComponent implements OnInit{
 
-    reviewForm!: FormGroup;
+  categories = ['Kids', 'Women', 'Men', 'Essentials', 'Electronics', 'Others'];
+  reviewForm!: FormGroup;
   constructor(private formbuilder: FormBuilder, private router: Router, private reviewServices:ReviewService) { }
 
 
@@ -39,4 +40,7 @@ export class PostReviewComponent implements OnInit{
     //navigating back to admin page whiich has all the products listed
     this.router.navigate(['home-page']);
   }
+
+
+
 }

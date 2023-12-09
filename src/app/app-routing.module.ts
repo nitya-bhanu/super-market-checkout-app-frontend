@@ -24,6 +24,9 @@ import { PostReviewComponent } from './post-review/post-review.component';
 import { LocateProductsComponent } from './locate-products/locate-products.component';
 import { ProductAlertsComponent } from './product-alerts/product-alerts.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
+import { MonthlyCompareComponent } from './monthly-compare/monthly-compare.component';
+import { BrandOnboardingComponent } from './brand-onboarding/brand-onboarding.component';
+import { ShowBrandRequestsComponent } from './show-brand-requests/show-brand-requests.component';
 
 
 const routes: Routes = [
@@ -83,6 +86,10 @@ const routes: Routes = [
     component:UserOrdersComponent
   },
   {
+    path:"brand-onboarding",
+    component:BrandOnboardingComponent
+  },
+  {
     path: "dashboard",
     component: AdminDashboardComponent,
     canActivate:[adminGuard],
@@ -110,6 +117,14 @@ const routes: Routes = [
       {
         path:'review',
         component:GetReviewComponent
+      },
+      {
+        path:'month-compare',
+        component:MonthlyCompareComponent
+      },
+      {
+        path:'view-onboard-requests',
+        component:ShowBrandRequestsComponent
       },
       {
         path:':productName',

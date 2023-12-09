@@ -1,0 +1,30 @@
+<mat-spinner *ngIf="!spinnerLoad"></mat-spinner>
+<table class="table" *ngIf="spinnerLoad">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Brand Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Business Email Id</th>
+            <th scope="col">Website Link</th>
+            <th scope="col">Categories Available</th>
+            <th scope="col">Approval Status</th>
+            <th scope="col">Approve</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of brandRequests">
+            <td>{{item.brandName}}</td>
+            <td> {{item.description}} </td>
+            <td> {{item.businessEmailId}} </td>
+            <td> <a href="{{item.onlineWebsiteLink}}">Click Here</a> </td>
+            <td>
+                <ul *ngFor="let itemz of item.productsCategory">
+                    <li> {{itemz}} </li>
+                </ul>
+            </td>
+            <td *ngIf="item.approvalStatus===true">Approved</td>
+            <td *ngIf="item.approvalStatus!==true">Pending</td>
+            <td><button (click)="approveOnboardingRequest(item)"><i class="bi bi-check2" style="font-size: 30px;color: green;"></i></button><button (click)="denyBrandRequests(item)"><i class="bi bi-x" style="font-size: 30px;color: red;"></i></button></td>
+        </tr>
+    </tbody>
+</table>

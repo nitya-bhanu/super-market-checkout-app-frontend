@@ -7,7 +7,7 @@
             + '...' : FetchedProducts.description}}</p>
 
         <div class="button">
-            <a>Rs. {{FetchedProducts.price}}</a>
+            <a>$ {{FetchedProducts.price}}</a>
             <a type="button" [routerLink]="(['/single-pane',FetchedProducts.prodId])">View More</a>
             <div></div>
             <a *ngIf="checkTag==='user'" class="cart-btn" [id]="FetchedProducts.prodId" (click)="addToCart(FetchedProducts.prodId)">ADD TO CART</a>

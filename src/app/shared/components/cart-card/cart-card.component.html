@@ -6,7 +6,7 @@
         <div class="button">
                 <a (click)="increaseCart(displayProducts.prodId)" [routerLink]="['/cart']">+</a>
                 <a (click)="decreaseCart(displayProducts.prodId)" [routerLink]="['/cart']">-</a>
-                <p>Price ${{displayProducts.price}}</p>
+                <p>Price $ {{displayProducts.price}}</p>
                 <p>Quantity: {{FetchedProducts.orderedProductQuantity}}</p>
             <a class="cart-btn" (click)="removeFromCart(displayProducts.prodId)"><i class="cart-icon ion-bag"></i>REMOVE FROM
                 CART</a>

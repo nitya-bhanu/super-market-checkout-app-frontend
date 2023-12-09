@@ -8,7 +8,11 @@
             <div class="user-details">
               <div class="input-box">
                 <span class="details">Review Category</span>
-                <input type="text" name="" required="" formControlName="reviewCategory">
+                <!-- <input type="text" name="" required="" formControlName="reviewCategory"> -->
+                <select formControlName="reviewCategory">
+                  <option value="">Select Category</option>
+                  <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+                </select>
               </div>
               <div class="input-box">
                 <span class="details">Description</span>

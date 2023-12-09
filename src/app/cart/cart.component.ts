@@ -131,7 +131,7 @@ export class CartComponent implements OnInit, AfterViewInit {
     const RozarpayOptions = {
       description: 'Sample Razorpay demo',
       currency: 'INR',
-      amount: Math.floor(this.sumTotal) * 100,
+      amount: Math.floor(this.sumTotal*83.41) * 100,
       name: 'Cart Checkout',
       key: 'rzp_test_A0x90SYHBfArPO',
       order_id: null,

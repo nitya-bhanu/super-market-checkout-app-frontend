@@ -1,23 +1,52 @@
-<app-home-navbar></app-home-navbar>
-<section>
-    <div class="outer">
-        <div class="content">
-            <h1>{{FetchedProduct.title}}</h1>
-            <p>{{FetchedProduct.description}}</p>
-            <p>Rating: {{FetchedProduct.rating}}</p>
-            <p>Category: {{FetchedProduct.category}}</p>
-            <div class="button">
-                <a>$ {{FetchedProduct.price}}</a>
-            </div>
-            <a id="add-cart-btn" class="btn btn-outline-dark" (click)="addToCart()">ADD TO CART</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand">Cart Checkout</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item"><a class="nav-link" [routerLink]="['/admin-page']">Home</a></li>
+            </ul>
+            <button class="cart-btn" [routerLink]="['/cart']">
+                <i class="bi-cart-fill me-1"></i>
+                Cart
+                <span id="cart-pill-number" class="badge bg-dark text-white ms-1 rounded-pill"></span>
+            </button>
         </div>
-        <img src="{{FetchedProduct.imageUrl}}" alt="Singe Product View">
     </div>
-    <div class="right-pane">
-        <h2>Related Products</h2>
-        <div class="inner"  *ngFor="let item of productsList">
+</nav>
+
+<section>
+    <div class="upper">
+        <div class="outer">
+            <div class="content">
+                <h1>{{FetchedProduct.title}}</h1>
+                <p>{{FetchedProduct.description}}</p>
+                <p>Rating: {{FetchedProduct.rating}}</p>
+                <p>Category: {{FetchedProduct.category}}</p>
+                <div class="button">
+                    <a>$ {{FetchedProduct.price}}</a>
+                </div>
+                <button *ngIf="userRole==='user'" id="add-cart-btn" class="btn btn-outline-dark"
+                    (click)="addToCart()">ADD
+                    TO CART</button>
+            </div>
+            <img src="{{FetchedProduct.imageUrl}}" alt="Singe Product View">
+        </div>
+        <div class="right-pane">
+            <h2>Related Products</h2>
+            <div class="inner" *ngFor="let item of productsList">
                 <h1>{{item.title}}</h1>
-            <img src="{{item.imageUrl}}" alt="Singe Product View">
+                <img src="{{item.imageUrl}}" alt="Singe Product View">
+            </div>
+        </div>
+    </div>
+    <div class="lower">
+        <h2>Frequently Bought Items Together</h2>
+        <div class="lower-pane">
+           
+            <div class="inner" *ngFor="let item of freqProductsList">
+                <h1>{{item.title}}</h1>
+                <img src="{{item.imageUrl}}" alt="Singe Product View">
+            </div>
         </div>
     </div>
 </section>

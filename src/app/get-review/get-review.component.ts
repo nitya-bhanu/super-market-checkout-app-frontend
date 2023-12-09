@@ -9,6 +9,7 @@ import { ReviewService } from '../shared/services/review.service';
 })
 export class GetReviewComponent implements OnInit{
 
+  loader=false;
   reviewLists!:Array<Review>
 
   constructor(private reviewServices:ReviewService){}
@@ -20,6 +21,7 @@ export class GetReviewComponent implements OnInit{
   getAllReviews(){
     this.reviewServices.getAllReviews().subscribe({
       next:(resp)=>{
+        this.loader=true
         this.reviewLists=resp;
       },
       error:(err)=>{

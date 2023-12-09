@@ -1,0 +1,38 @@
+<app-home-navbar></app-home-navbar>
+<section>
+    <div class="side-container"><img src="https://images.ctfassets.net/17o2epk8ivh7/7raDMjSpMm4y0smLDaVXqb/844222c13b1782420d656172daa5b5ee/ShopifyPlus_Multi-Brand_Ecommerce_3840x2160.png?h=1215&q=90&w=2160"
+            alt="add-product-image" /></div>
+    <div class="container">
+        <div class="title">Brand Onboarding Request</div>
+        <div class="content">
+            <form [formGroup]="onBoardBrandForm">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Brand/Company Name</span>
+                        <input type="text" name="" required="" formControlName="brandName">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Brand Description</span>
+                        <input type="text" name="" required="" formControlName="description">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Your Business Email Id</span>
+                        <input type="text" name="" required="" formControlName="businessEmailId">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Your Online Website Link</span>
+                        <input type="string" name="" required="" formControlName="onlineWebsiteLink">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Product Category/Categories (Multiple Categories must be , separated
+                            value) </span>
+                        <input type="string" name="" required="" formControlName="productsCategory" />
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Request Onboarding" (click)="submitForm()">
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

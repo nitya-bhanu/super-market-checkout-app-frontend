@@ -4,6 +4,7 @@ import { UserSignInSchema } from '../shared/models/userSignInResponse';
 import { SharedDataService } from '../shared/services/shared-data.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sign-in',
@@ -14,7 +15,7 @@ export class SignInComponent implements OnInit{
 
   signInForm!:FormGroup;
 
-  constructor(private getSignInUpService:SignInUpService, private sharedDataService:SharedDataService, private router:Router, private formBuilder:FormBuilder){}
+  constructor(private getSignInUpService:SignInUpService, private sharedDataService:SharedDataService, private router:Router, private formBuilder:FormBuilder, private _snackBar: MatSnackBar){}
   fetchedUserDataResponse!:UserSignInSchema
 
   ngOnInit(): void {
@@ -39,9 +40,17 @@ export class SignInComponent implements OnInit{
         else if(this.fetchedUserDataResponse.bool===true && this.fetchedUserDataResponse.role==='admin')
         this.router.navigate(['admin-page']);
         else
-        this.router.navigate(['sign-in'])
+        {
+          this._snackBar.open('Invalid Credentials', 'OK', { 
+            duration: 2000, 
+          });
+          this.router.navigate(['sign-in'])
+        }
       },
       error: (err) => {
+        this._snackBar.open('Invalid Credentials', 'OK', { 
+          duration: 2000, 
+        });
         console.log('Error fetching password:', err);
       }
     })

@@ -1,11 +1,4 @@
 section{
     display: flex;
     flex-direction: column;
-    .product-alert-pane{
-        display: flex;
-        flex-direction: column;
-        .product-alert{
-            display: flex;
-        }
-    }
 }

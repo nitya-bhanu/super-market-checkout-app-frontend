@@ -43,6 +43,10 @@ import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.compon
 import { LocateProductsComponent } from './locate-products/locate-products.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
 import { ProductAlertsComponent } from './product-alerts/product-alerts.component';
+import { MonthlyCompareComponent } from './monthly-compare/monthly-compare.component';
+import { BrandOnboardingComponent } from './brand-onboarding/brand-onboarding.component';
+import { ShowBrandRequestsComponent } from './show-brand-requests/show-brand-requests.component';
+import { SendAnnouncementsComponent } from './send-announcements/send-announcements.component';
 
 
 @NgModule({
@@ -75,6 +79,10 @@ import { ProductAlertsComponent } from './product-alerts/product-alerts.componen
     LocateProductsComponent,
     UserOrdersComponent,
     ProductAlertsComponent,
+    MonthlyCompareComponent,
+    BrandOnboardingComponent,
+    ShowBrandRequestsComponent,
+    SendAnnouncementsComponent,
   ],
   imports: [
     BrowserModule,

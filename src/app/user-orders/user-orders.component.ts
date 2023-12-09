@@ -15,7 +15,7 @@ export class UserOrdersComponent implements OnInit {
   userId!: string;
   products!: productsList
   productAndQuantity!: ProductAndQuantityList[];
-  showOrderedProducts!: ShowOrderedItems[]
+  showOrderedProducts!: ShowOrderedItems[];
 
   constructor(private orderService: OrderHistoryService, private sharedDataServices: SharedDataService, private productServices: ProductsService) {
     this.userId = this.sharedDataServices.getUserResponse().userId;
@@ -67,4 +67,10 @@ interface ShowOrderedItems {
   productTitle: string;
   productImageUrl: string;
   productQuantity: number;
+}
+
+
+interface ShowOrderedItemsWithDate{
+  date:string;
+  data:Array<ShowOrderedItems>;
 }

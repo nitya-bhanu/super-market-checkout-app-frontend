@@ -6,6 +6,8 @@ import { orderSchema } from '../shared/models/orders';
 import { MatDialog } from '@angular/material/dialog';
 import { RequestedProductsComponent } from '../requested-products/requested-products.component';
 import { ProductAlertsComponent } from '../product-alerts/product-alerts.component';
+import { ShowBrandRequestsComponent } from '../show-brand-requests/show-brand-requests.component';
+import { SendAnnouncementsComponent } from '../send-announcements/send-announcements.component';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -143,8 +145,19 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
+
+
+
   openProductAlertDialog() {
     this.dialog.open(ProductAlertsComponent);
+  }
+
+  openRequestOnboardAlertDialog(){
+    this.dialog.open(ShowBrandRequestsComponent);
+  }
+
+  openSendAnnouncementDialog(){
+    this.dialog.open(SendAnnouncementsComponent);
   }
 
 }

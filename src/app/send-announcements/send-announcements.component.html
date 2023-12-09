@@ -1,0 +1,9 @@
+<div class="announcement-form">
+    <form [formGroup]="announcementForm">
+        <label for="subject">Subject of Announcement: </label>
+        <input class="announce-subject" type="text" formControlName="subject" placeholder="Type subject of the announcement">
+        <label for="text">Describe More: </label>
+        <input class="announce-text" type="textarea" formControlName="text" placeholder="Describe more about the announcement">
+    </form>
+    <button class="btn btn-outline-dark" (click)="sendAnnouncement()">Send Announcement</button>
+</div>

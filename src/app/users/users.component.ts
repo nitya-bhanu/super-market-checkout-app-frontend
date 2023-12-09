@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class UsersComponent implements OnInit{
 
+  loader=false;
+
   productDisplayData!: Array<userSchema>;
 
   constructor(private userServices: UserService,private router:Router) { }
@@ -21,6 +23,7 @@ export class UsersComponent implements OnInit{
   getAllUsers():void {
     this.userServices.getAllUsers().subscribe({
       next: (resp) => {
+        this.loader=true;
         console.log('Here Users',resp);
         this.productDisplayData = resp;
       },

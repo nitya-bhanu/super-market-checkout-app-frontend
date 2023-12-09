@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../shared/services/order.service';
 import { orderSchema } from '../shared/models/orders';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-order-details',
@@ -98,8 +99,15 @@ export class OrderDetailsComponent implements OnInit{
   setMonthlyArray():void{
     this.monthlyOrderArray = [];
     this.monthlyOrderArray.push(this.janOrders,this.febOrders,this.marchOrders,this.aprilOrders,this.mayOrders,this.juneOrders,this.julyOrders,this.augustOrders,this.septOrders,this.octOrders,this.novOrders,this.decOrders);
-    console.log('Nov', this.novOrders);
-    
+    console.log('Nov', this.novOrders); 
+  }
+
+  exportToExcel(){
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.allOrders);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    /* save to file */
+    XLSX.writeFile(wb, 'monthly-orders-excel.xlsx');
   }
 
 }

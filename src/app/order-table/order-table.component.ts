@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { orderSchema } from '../shared/models/orders';
 import { OrderService } from '../shared/services/order.service';
 import { Chart } from 'chart.js/auto';
@@ -13,6 +13,7 @@ import { Chart } from 'chart.js/auto';
 //generating bar chart for visualisation
 export class OrderTableComponent implements OnInit {
 
+  loader=false;
 
   orderData!: Array<orderSchema>;
   greetings='';
@@ -33,6 +34,7 @@ export class OrderTableComponent implements OnInit {
   getAllOrders():void {
     this.orderService.getAllOrders().subscribe({
       next: (resp) => {
+        this.loader=true;
         this.orderData = resp
         this.orderData.forEach(e=>{
           let countIn=0;
@@ -50,10 +52,12 @@ export class OrderTableComponent implements OnInit {
               this.monthBool=true;
             }
           })
+          this.monthlyData.sort((a,b)=> a.month.localeCompare(b.month));
+
           if(this.monthBool===false)
           this.monthlyData.push(pushObject);
         })
-        this.chart=new Chart('acquisitions',
+        this.chart=new Chart('acquisitions-2',
           {
             type: 'bar',
             data: {
@@ -68,7 +72,21 @@ export class OrderTableComponent implements OnInit {
              
             },
             options: {
-              aspectRatio:1
+              aspectRatio:1,
+              scales:{
+                x:{
+                  title:{
+                    display:true,
+                    text:'Month',
+                  }
+                },
+                y:{
+                 title:{
+                  display:true,
+                  text:'Number of Products Sold'
+                 }
+                }
+              }
             }
           }
         );

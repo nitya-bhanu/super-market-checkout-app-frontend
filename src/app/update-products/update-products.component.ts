@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../shared/services/products.service';
+import { prodcutsSchema } from '../shared/models/prodcuts';
 
 @Component({
   selector: 'app-update-products',
@@ -11,17 +12,34 @@ import { ProductsService } from '../shared/services/products.service';
 export class UpdateProductsComponent implements OnInit {
   productId = '';
   productUpdateForm!: FormGroup;
+  prePopulatedProduct!: prodcutsSchema;
+
   constructor(private activatedRoute: ActivatedRoute, private formbuilder: FormBuilder, private router: Router, private productService: ProductsService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(p => {
       // console.log(p['prodId']);
       this.productId = p['prodId'];
+
+      this.productService.getProductById(p['prodId']).subscribe({
+        next: (resp) => {
+          this.prePopulatedProduct = resp.data;
+          this.productUpdateForm.patchValue({
+            prodId: this.productId,
+            quantity: this.prePopulatedProduct.quantity,
+            price: this.prePopulatedProduct.price,
+            title: this.prePopulatedProduct.title,
+            category: this.prePopulatedProduct.category,
+            description: this.prePopulatedProduct.description,
+            imageUrl: this.prePopulatedProduct.imageUrl
+          });
+        }
+      })
     })
 
     //generating form builder
     this.productUpdateForm = this.formbuilder.group({
-      prodId: this.formbuilder.control(this.productId),
+      prodId: this.formbuilder.control(''),
       quantity: this.formbuilder.control(1),
       price: this.formbuilder.control(0.0),
       title: this.formbuilder.control(''),
@@ -29,9 +47,11 @@ export class UpdateProductsComponent implements OnInit {
       description: this.formbuilder.control(''),
       imageUrl: this.formbuilder.control('')
     })
+
+
   }
 
-  submitForm():void {
+  submitForm(): void {
     console.log(this.productUpdateForm);
     const prod = {
       category: this.productUpdateForm.value['category'],
@@ -52,11 +72,11 @@ export class UpdateProductsComponent implements OnInit {
         console.log(res);
       }
     });
-    this.router.navigate(['/']);
+    this.router.navigate(['/admin-page']);
   }
 
   //deleting products from supermarket inventory
-  deleteProduct():void {
+  deleteProduct(): void {
     this.productService.deleteProductById(this.productId).subscribe({
       next: (res) => {
         if (res.success === true) {

@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoyaltyPaneComponent implements OnInit {
 
+  loader=false;
+
   loyaltyList!: Array<LoyaltyScehma>;
   loyaltyNewValue = '';
 
@@ -23,6 +25,7 @@ export class LoyaltyPaneComponent implements OnInit {
   getLoyalties(): void {
     this.loyaltyService.getAllLoyaltyPoints().subscribe({
       next: (resp) => {
+        this.loader=true;
         this.loyaltyList = resp;
       },
       error: (err) => {

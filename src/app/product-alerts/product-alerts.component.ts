@@ -10,12 +10,14 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class ProductAlertsComponent implements OnInit{
   productsData!:Array<prodcutsSchema>
+  loader=false;
 
   constructor(private getProductServices:ProductsService,public dialogRef: MatDialogRef<ProductAlertsComponent>){}
 
   ngOnInit(): void {
     this.getProductServices.getProducts(0, 100, '', '', '', '').subscribe({
       next: (resp) => {
+        this.loader=true;
         // console.log(resp.data);
         this.productsData = resp.data.filter(e=>{
           return e.quantity<10;

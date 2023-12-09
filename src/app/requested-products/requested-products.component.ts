@@ -13,6 +13,7 @@ export class RequestedProductsComponent implements OnInit {
   requestedProducts!: Array<RequestedProductSchema>;
   showProduct!: RequestedProductSchema;
   bool = false;
+  loader=false;
 
   titleName!: string;
 
@@ -23,6 +24,7 @@ export class RequestedProductsComponent implements OnInit {
     this.titleName=this.data.title;
     this.requestedProductServices.getRequestedProducts().subscribe({
       next: (resp) => {
+        this.loader=true;
         this.requestedProducts = resp;
         // console.log(this.requestedProducts);
         this.requestedProducts.forEach(e => {
