@@ -1,0 +1,5 @@
+<form [formGroup]="otpForm">
+    <label for="otp">Enter the OTP send to your email</label>
+    <input type="text" formControlName="otp">
+    <button class="btn btn-outline-dark" (click)="submitOtp()">Submit</button>
+</form>

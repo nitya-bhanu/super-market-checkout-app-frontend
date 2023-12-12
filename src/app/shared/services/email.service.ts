@@ -10,11 +10,15 @@ export class EmailService {
   constructor(private http:HttpClient) { }
 
   sendEmail(emailInfo:EmailTemplate){
-    return this.http.post(`http://localhost:8080/email`,emailInfo,{responseType:'text'});
+    return this.http.post(`https://email-backend-production.up.railway.app/email`,emailInfo,{responseType:'text'});
   }
 
   sendEmailToAll(emailInfo:EmailAllTemplate){
-    return this.http.post(`http://localhost:8080/email/announcements`,emailInfo,{responseType:'text'});
+    return this.http.post(`https://email-backend-production.up.railway.app/email/announcements`,emailInfo,{responseType:'text'});
+  }
+
+  sendOtpRequest(emailId:string){
+    return this.http.post(`https://email-backend-production.up.railway.app/email/otp`,emailId,{responseType:'text'});
   }
 
 }

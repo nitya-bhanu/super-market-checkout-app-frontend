@@ -17,6 +17,10 @@ export class SharedDataService {
   };
 
 
+  otp!:string;
+
+  isOtpValidated!:false;
+
   userResponse!: UserResponse
 
 
@@ -41,6 +45,16 @@ export class SharedDataService {
   getUserResponse():UserResponse {
     return JSON.parse(localStorage.getItem('userResponse')!);
   }
+
+  setOtp(otp:string){
+    this.otp=otp;
+    localStorage.setItem('otp',JSON.stringify(this.otp));
+  }
+
+  getOtp(){
+    return JSON.parse(localStorage.getItem('otp')!);
+  }
+
 }
 
 interface productAndQuantitySchema {

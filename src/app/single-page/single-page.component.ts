@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { prodcutsSchema, productsList } from '../shared/models/prodcuts';
+import { prodcutsSchema} from '../shared/models/prodcuts';
 import { ProductsService } from '../shared/services/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SharedDataService } from '../shared/services/shared-data.service';
 import { CartService } from '../shared/services/cart.service';
-import { UserService } from '../shared/services/user.service';
 import { OrderService } from '../shared/services/order.service';
 import { orderSchema } from '../shared/models/orders';
-import { ProductAndQuantityList } from '../shared/models/productAndQuantityList';
 import { prodcutsList } from '../shared/models/cart';
 
 @Component({
@@ -102,6 +100,7 @@ export class SinglePageComponent implements OnInit {
         else
           this.freqProductAndQuantityList.push(...e.productAndQuantityList);
       }
+      bool=false;
     })
     this.saveRelatedProducuts();
   }

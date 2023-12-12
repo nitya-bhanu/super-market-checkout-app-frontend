@@ -1,0 +1,9 @@
+<div class="denyReasonForm">
+    <form [formGroup]="denyReasonForm">
+        <label for="otp">State the subject of your email</label>
+        <input class="denial-subject" type="text" formControlName="subject">
+        <label for="otp">State the Reason</label>
+        <textarea class="denial-text" type="text" formControlName="reason" rows="4" cols="50"></textarea>
+    </form>
+    <button class="btn btn-outline-dark" (click)="sendMail()">Submit</button>
+</div>

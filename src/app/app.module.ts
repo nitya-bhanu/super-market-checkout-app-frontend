@@ -47,6 +47,8 @@ import { MonthlyCompareComponent } from './monthly-compare/monthly-compare.compo
 import { BrandOnboardingComponent } from './brand-onboarding/brand-onboarding.component';
 import { ShowBrandRequestsComponent } from './show-brand-requests/show-brand-requests.component';
 import { SendAnnouncementsComponent } from './send-announcements/send-announcements.component';
+import { EnterOtpComponent } from './enter-otp/enter-otp.component';
+import { DenyRequestReasonComponent } from './deny-request-reason/deny-request-reason.component';
 
 
 @NgModule({
@@ -83,6 +85,8 @@ import { SendAnnouncementsComponent } from './send-announcements/send-announceme
     BrandOnboardingComponent,
     ShowBrandRequestsComponent,
     SendAnnouncementsComponent,
+    EnterOtpComponent,
+    DenyRequestReasonComponent,
   ],
   imports: [
     BrowserModule,

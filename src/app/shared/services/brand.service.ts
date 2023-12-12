@@ -11,15 +11,14 @@ export class BrandService {
   constructor(private http: HttpClient) { }
 
   postBrandRequest(brandDetails:BrandDetails){
-    return this.http.post(`http://localhost:8080/brand`,brandDetails,{responseType:'text'});
+    return this.http.post(`https://email-backend-production.up.railway.app/brand`,brandDetails,{responseType:'text'});
   }
 
   getBrandRequests():Observable<Array<BrandDetails>>{
-    return this.http.get<Array<BrandDetails>>(`http://localhost:8080/brand`);
+    return this.http.get<Array<BrandDetails>>(`https://email-backend-production.up.railway.app/brand`);
   }
 
-  deleteBrandRequests(brandId:string):Observable<string>{
-    return this.http.delete<string>(`http://localhost:8080/brand/${brandId}`);
+  deleteBrandRequests(brandId:string){
+    return this.http.delete(`https://email-backend-production.up.railway.app/brand/${brandId}`,{responseType:'text'});
   }
-
 }
